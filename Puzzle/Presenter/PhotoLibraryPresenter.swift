@@ -30,7 +30,7 @@ class PhotoLibraryPresenter: LibraryPresenter {
     }
     
     func load(index: Int, completion: @escaping (UIImage?) -> ()) {
-        print("presenter load")
+        print("presenter load index: \(index)")
         self.model?.load(index: index, completion: completion)
     }
 }
