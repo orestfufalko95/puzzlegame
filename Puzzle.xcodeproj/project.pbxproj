@@ -7,8 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D056FA8224C8D8300E33E57 /* GaleryPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D056FA7224C8D8300E33E57 /* GaleryPhotoCell.swift */; };
+		6D09889E2249F0CB00A39DD8 /* LibraryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D09889D2249F0CB00A39DD8 /* LibraryPresenter.swift */; };
+		6D0988A02249F18E00A39DD8 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D09889F2249F18E00A39DD8 /* LibraryView.swift */; };
+		6D0988A22249F3D000A39DD8 /* LibraryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0988A12249F3D000A39DD8 /* LibraryTableViewController.swift */; };
+		6D0988A42249F5BC00A39DD8 /* PhotoLibraryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0988A32249F5BC00A39DD8 /* PhotoLibraryPresenter.swift */; };
+		6D0988A62249F7FF00A39DD8 /* LibraryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0988A52249F7FF00A39DD8 /* LibraryModel.swift */; };
+		6D0988A82249F97D00A39DD8 /* PhotoLibraryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0988A72249F97D00A39DD8 /* PhotoLibraryModel.swift */; };
 		6D2BE5DA2247F63900D34A43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2BE5D92247F63900D34A43 /* AppDelegate.swift */; };
-		6D2BE5DC2247F63900D34A43 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2BE5DB2247F63900D34A43 /* ViewController.swift */; };
+		6D2BE5DC2247F63900D34A43 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2BE5DB2247F63900D34A43 /* MainTabBarController.swift */; };
 		6D2BE5DF2247F63900D34A43 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D2BE5DD2247F63900D34A43 /* Main.storyboard */; };
 		6D2BE5E12247F63B00D34A43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D2BE5E02247F63B00D34A43 /* Assets.xcassets */; };
 		6D2BE5E42247F63B00D34A43 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D2BE5E22247F63B00D34A43 /* LaunchScreen.storyboard */; };
@@ -34,9 +41,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6D056FA7224C8D8300E33E57 /* GaleryPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaleryPhotoCell.swift; sourceTree = "<group>"; };
+		6D09889D2249F0CB00A39DD8 /* LibraryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryPresenter.swift; sourceTree = "<group>"; };
+		6D09889F2249F18E00A39DD8 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
+		6D0988A12249F3D000A39DD8 /* LibraryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryTableViewController.swift; sourceTree = "<group>"; };
+		6D0988A32249F5BC00A39DD8 /* PhotoLibraryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryPresenter.swift; sourceTree = "<group>"; };
+		6D0988A52249F7FF00A39DD8 /* LibraryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryModel.swift; sourceTree = "<group>"; };
+		6D0988A72249F97D00A39DD8 /* PhotoLibraryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryModel.swift; sourceTree = "<group>"; };
 		6D2BE5D62247F63900D34A43 /* Puzzle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Puzzle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D2BE5D92247F63900D34A43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6D2BE5DB2247F63900D34A43 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6D2BE5DB2247F63900D34A43 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		6D2BE5DE2247F63900D34A43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6D2BE5E02247F63B00D34A43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6D2BE5E32247F63B00D34A43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -74,6 +88,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6D0988992249EFB100A39DD8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6D0988A52249F7FF00A39DD8 /* LibraryModel.swift */,
+				6D0988A72249F97D00A39DD8 /* PhotoLibraryModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6D09889A2249EFBF00A39DD8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6D09889C2249F05D00A39DD8 /* Storyboard */,
+				6D2BE5DB2247F63900D34A43 /* MainTabBarController.swift */,
+				6D09889F2249F18E00A39DD8 /* LibraryView.swift */,
+				6D0988A12249F3D000A39DD8 /* LibraryTableViewController.swift */,
+				6D056FA7224C8D8300E33E57 /* GaleryPhotoCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6D09889B2249EFC800A39DD8 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				6D09889D2249F0CB00A39DD8 /* LibraryPresenter.swift */,
+				6D0988A32249F5BC00A39DD8 /* PhotoLibraryPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		6D09889C2249F05D00A39DD8 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				6D2BE5E22247F63B00D34A43 /* LaunchScreen.storyboard */,
+				6D2BE5DD2247F63900D34A43 /* Main.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
 		6D2BE5CD2247F63900D34A43 = {
 			isa = PBXGroup;
 			children = (
@@ -97,11 +150,11 @@
 		6D2BE5D82247F63900D34A43 /* Puzzle */ = {
 			isa = PBXGroup;
 			children = (
+				6D09889B2249EFC800A39DD8 /* Presenter */,
+				6D09889A2249EFBF00A39DD8 /* View */,
+				6D0988992249EFB100A39DD8 /* Model */,
 				6D2BE5D92247F63900D34A43 /* AppDelegate.swift */,
-				6D2BE5DB2247F63900D34A43 /* ViewController.swift */,
-				6D2BE5DD2247F63900D34A43 /* Main.storyboard */,
 				6D2BE5E02247F63B00D34A43 /* Assets.xcassets */,
-				6D2BE5E22247F63B00D34A43 /* LaunchScreen.storyboard */,
 				6D2BE5E52247F63B00D34A43 /* Info.plist */,
 			);
 			path = Puzzle;
@@ -256,8 +309,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D2BE5DC2247F63900D34A43 /* ViewController.swift in Sources */,
+				6D0988A02249F18E00A39DD8 /* LibraryView.swift in Sources */,
+				6D0988A62249F7FF00A39DD8 /* LibraryModel.swift in Sources */,
+				6D0988A82249F97D00A39DD8 /* PhotoLibraryModel.swift in Sources */,
+				6D2BE5DC2247F63900D34A43 /* MainTabBarController.swift in Sources */,
+				6D09889E2249F0CB00A39DD8 /* LibraryPresenter.swift in Sources */,
+				6D0988A42249F5BC00A39DD8 /* PhotoLibraryPresenter.swift in Sources */,
+				6D056FA8224C8D8300E33E57 /* GaleryPhotoCell.swift in Sources */,
 				6D2BE5DA2247F63900D34A43 /* AppDelegate.swift in Sources */,
+				6D0988A22249F3D000A39DD8 /* LibraryTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

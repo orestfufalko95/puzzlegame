@@ -9,15 +9,33 @@
 import UIKit
 
 class LibraryTableViewController: UITableViewController {
+    
+    private var presenter: PhotoLibraryPresenter?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.presenter = PhotoLibraryPresenter()
+        
+//        self.tableView.register(<#T##cellClass: AnyClass?##AnyClass?#>, forCellReuseIdentifier: <#T##String#>)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.presenter?.attachView(view: self, model: PhotoLibraryModel())
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        self.presenter?.detachView()
     }
 }
 
@@ -37,23 +55,29 @@ extension LibraryTableViewController: LibraryView {
 extension LibraryTableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 4
+        return 1
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: GaleryPhotoCell.identifier, for: indexPath)
 
         // Configure the cell...
+        self.presenter?.load(index: indexPath.row, completion: { [weak cell] image in
+            if let newCell = cell as? GaleryPhotoCell, let newImage = image {
+                newCell.photo?.image = newImage
+                newCell.layoutSubviews()
+            }
+        })
 
         return cell
     }
-    */
+ 
 
     /*
     // Override to support conditional editing of the table view.

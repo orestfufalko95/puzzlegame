@@ -9,8 +9,11 @@
 protocol LibraryPresenter{
     
     associatedtype View: LibraryView
+    associatedtype Model: LibraryModel
     
-    func attachView(view: View)
+    func attachView(view: View, model: Model)
     
     func detachView()
+    
+    func load(index: Int, completion: (Model.Item?) -> ())
 }

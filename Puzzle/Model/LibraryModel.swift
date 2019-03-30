@@ -11,4 +11,6 @@ protocol LibraryModel {
     associatedtype Item
     
     func getItems() -> [Item]
+    
+    func load(index: Int, completion: (Item?) -> ())
 }

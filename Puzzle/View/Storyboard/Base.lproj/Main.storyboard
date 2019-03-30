@@ -35,13 +35,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="fIO-l6-8I1">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GaleryPhotoCell" id="fIO-l6-8I1" customClass="GaleryPhotoCell" customModule="Puzzle" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fIO-l6-8I1" id="9pI-M9-OU9">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wz6-Gc-aWo">
+                                            <rect key="frame" x="0.0" y="0.0" width="276" height="43.5"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0RU-7w-ThT">
+                                            <rect key="frame" x="276" y="0.0" width="99" height="43.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Wz6-Gc-aWo" firstAttribute="leading" secondItem="9pI-M9-OU9" secondAttribute="leading" id="6dC-A1-CLM"/>
+                                        <constraint firstAttribute="trailing" secondItem="0RU-7w-ThT" secondAttribute="trailing" id="De8-HD-aIb"/>
+                                        <constraint firstAttribute="bottom" secondItem="0RU-7w-ThT" secondAttribute="bottom" id="K2L-Wp-flX"/>
+                                        <constraint firstItem="Wz6-Gc-aWo" firstAttribute="top" secondItem="9pI-M9-OU9" secondAttribute="top" id="gdu-B0-QQZ"/>
+                                        <constraint firstItem="0RU-7w-ThT" firstAttribute="leadingMargin" secondItem="Wz6-Gc-aWo" secondAttribute="trailing" constant="8" id="pHp-Dy-zOD"/>
+                                        <constraint firstAttribute="bottom" secondItem="Wz6-Gc-aWo" secondAttribute="bottom" id="plp-5n-T83"/>
+                                        <constraint firstItem="0RU-7w-ThT" firstAttribute="top" secondItem="9pI-M9-OU9" secondAttribute="top" id="vku-92-bh1"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="photo" destination="Wz6-Gc-aWo" id="zDW-7Y-hKH"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
