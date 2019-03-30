@@ -15,7 +15,7 @@ class LibraryTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.presenter = PhotoLibraryPresenter()
+        self.presenter = PhotoLibraryPresenter(model: PhotoLibraryModel())
         
 //        self.tableView.register(<#T##cellClass: AnyClass?##AnyClass?#>, forCellReuseIdentifier: <#T##String#>)
 
@@ -29,7 +29,7 @@ class LibraryTableViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.presenter?.attachView(view: self, model: PhotoLibraryModel())
+        self.presenter?.attachView(view: self)
     }
     
     override func viewDidDisappear(_ animated: Bool) {

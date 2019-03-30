@@ -9,7 +9,8 @@
 import UIKit
 
 class PhotoLibraryModel: LibraryModel {
-    func load(index: Int, completion: (UIImage?) -> ()) {
+    func load(index: Int, completion: @escaping (UIImage?) -> ()) {
+        print("asdfasdf")
         self.downloadItem(index: index, completion: completion)
     }
     
@@ -26,6 +27,7 @@ class PhotoLibraryModel: LibraryModel {
                 do {
                     let imageData = try Data(contentsOf: theProfileImageUrl as URL)
                     let image = UIImage(data: imageData)
+                    print("download completed")
                     self.onActionCompleted(completion: completion, image: image)
                 } catch {
                     print("Unable to load data: \(error)")
@@ -36,7 +38,7 @@ class PhotoLibraryModel: LibraryModel {
     }
     
     private func onActionCompleted(completion: @escaping (UIImage?) -> (), image: UIImage?) {
-        DispatchQueue.main.sync {
+        DispatchQueue.main.async {
             completion(image)
         }
     }

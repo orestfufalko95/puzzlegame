@@ -12,5 +12,5 @@ protocol LibraryModel {
     
     func getItems() -> [Item]
     
-    func load(index: Int, completion: (Item?) -> ())
+//    func load(index: Int, completion: (Item?) -> ())
 }

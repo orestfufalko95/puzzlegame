@@ -13,20 +13,24 @@ class PhotoLibraryPresenter: LibraryPresenter {
     typealias View = LibraryTableViewController
     typealias Model = PhotoLibraryModel
     
-    // TODO: maybe add as weak
     private weak var view: View?
-    private weak var model: Model?
     
-    func attachView(view: View, model: Model) {
-        self.view = view
+    private var model: Model!
+    
+    init(model: Model) {
         self.model = model
+    }
+    
+    func attachView(view: View) {
+        self.view = view
     }
     
     func detachView() {
         self.view = nil
     }
     
-    func load(index: Int, completion: (UIImage?) -> ()) {
+    func load(index: Int, completion: @escaping (UIImage?) -> ()) {
+        print("presenter load")
         self.model?.load(index: index, completion: completion)
     }
 }
