@@ -6,13 +6,12 @@
 //  Copyright © 2019 Orest Fufalko. All rights reserved.
 //
 
-import UIKit
-
 class PhotoLibraryPresenter: LibraryPresenter {
     
     typealias View = LibraryTableViewController
     typealias Model = PhotoLibraryModel
-    
+
+	//TODO: is view needed??!!
     private weak var view: View?
     
     private var model: Model!
@@ -29,7 +28,7 @@ class PhotoLibraryPresenter: LibraryPresenter {
         self.view = nil
     }
     
-    func load(index: Int, completion: @escaping (UIImage?) -> ()) {
+    func load(index: Int, completion: @escaping (Model.Item?) -> ()) {
         print("presenter load index: \(index)")
         self.model?.load(index: index, completion: completion)
     }

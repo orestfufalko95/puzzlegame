@@ -37,8 +37,13 @@ class PhotoLibraryModel: LibraryModel {
 		}
 	}
 
+}
+
+// MARK - Helpers
+extension PhotoLibraryModel {
+
 	private func completeWithSavedFile(completion: @escaping (UIImage?) -> (), imagePath: String) {
-	    DispatchQueue.global(qos: .userInitiated).async {
+		DispatchQueue.global(qos: .userInitiated).async {
 			self.onActionCompleted(completion: completion, image: UIImage(contentsOfFile: imagePath))
 		}
 	}
