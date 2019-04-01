@@ -14,6 +14,9 @@ protocol LibraryPresenter{
     func attachView(view: View)
     
     func detachView()
-    //TODO how to use @escaping if using protocol
-//    func load(index: Int, completion: (Model.Item?) -> ())
+
+    func itemsCount() -> Int
+
+    func load(index: Int, completion: @escaping (Model.Item?) -> ())
 }
+

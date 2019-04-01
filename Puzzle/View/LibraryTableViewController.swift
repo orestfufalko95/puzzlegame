@@ -16,6 +16,7 @@ class LibraryTableViewController: UITableViewController {
 		super.viewDidLoad()
 
 		self.presenter = PhotoLibraryPresenter(model: PhotoLibraryModel())
+		self.tableView.prefetchDataSource = self
 
 //        self.tableView.register(<#T##cellClass: AnyClass?##AnyClass?#>, forCellReuseIdentifier: <#T##String#>)
 
@@ -52,18 +53,32 @@ extension LibraryTableViewController: LibraryView {
 	}
 }
 
+// MARK: - Table view data source prefetching
+extension LibraryTableViewController: UITableViewDataSourcePrefetching {
+
+	func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+		print("prefetchRowsAt index: \(indexPaths.last?.row)")
+
+//		if let indexPath = indexPaths.last, indexPath.row + 1 > tableView.numberOfRows(inSection: indexPath.section) {
+//			self.presenter?.load(index: indexPath.row + 1, completion: { _ in
+//				print("prefetched index \(indexPath.row + 1)")
+//			})
+//		}
+	}
+}
+
 // MARK: - Table view data source
 extension LibraryTableViewController {
 
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		// #warning Incomplete implementation, return the number of rows
-		return 29
+		return self.presenter?.itemsCount() ?? 0 // 10
 	}
 
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: GaleryPhotoCell.identifier, for: indexPath)
-		print("start cellForRowAt timestamp: \(Date().timeIntervalSince1970) index: \(indexPath.row)")
+//		print("start cellForRowAt timestamp: \(Date().timeIntervalSince1970) index: \(indexPath.row)")
 		// Configure the cell...
 		self.presenter?.load(index: indexPath.row, completion: { [weak cell] image in
 			if let newCell = cell as? GaleryPhotoCell, let newImage = image {

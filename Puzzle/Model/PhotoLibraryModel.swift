@@ -8,19 +8,26 @@
 
 import UIKit
 
+//TODO: download 10 images once per request and only then call callback DispatchGroup
+
 class PhotoLibraryModel: LibraryModel {
 
 	private let imagesUrl = "https://picsum.photos/200/300?image="
 
-	private let manager: FileManager = FileManager.default
+	private let fileManager: FileManager = FileManager.default
 	private let imageDir: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
 			.first!
 			.appendingPathComponent("puzzle", isDirectory: true)
 
 	typealias Item = UIImage
 
-	func getItems() -> [UIImage] {
-		return []
+	var itemsCount: Int {
+		do {
+			return try fileManager.contentsOfDirectory(atPath: imageDir.path).count
+		} catch {
+			print("Unable to load data: \(error) index: \(index)")
+			return 0
+		}
 	}
 
 	func load(index: Int, completion: @escaping (UIImage?) -> ()) {
@@ -28,7 +35,7 @@ class PhotoLibraryModel: LibraryModel {
 		let imagePath = url.path
 //		print("model imagePath: \(imagePath)")
 
-		if manager.fileExists(atPath: imagePath) {
+		if fileManager.fileExists(atPath: imagePath) {
 			print("model cached file index: \(index)")
 			self.completeWithSavedFile(completion: completion, imagePath: imagePath)
 		} else {
@@ -40,17 +47,18 @@ class PhotoLibraryModel: LibraryModel {
 }
 
 // MARK - Helpers
-extension PhotoLibraryModel {
+private extension PhotoLibraryModel {
 
-	private func completeWithSavedFile(completion: @escaping (UIImage?) -> (), imagePath: String) {
+	private func completeWithSavedFile(completion: ((UIImage?) -> ())?, imagePath: String) {
 		DispatchQueue.global(qos: .userInitiated).async {
-			self.onActionCompleted(completion: completion, image: UIImage(contentsOfFile: imagePath))
+			self.handleComplete(completion: completion, image: UIImage(contentsOfFile: imagePath))
 		}
 	}
 
-	private func downloadItem(index: Int, completion: @escaping (UIImage?) -> (), imageUrl: String) {
+	private func downloadItem(index: Int, completion: ((UIImage?) -> ())?, imageUrl: String) {
+		//TODO move to property DispatchQueue
 		DispatchQueue.global(qos: .userInitiated).async {
-			if let imageDownloadUrl = URL(string: self.imagesUrl + String(index)) {
+			if let imageDownloadUrl: URL = URL(string: self.imagesUrl + String(index)) {
 				do {
 					let imageData: Data = try Data(contentsOf: imageDownloadUrl)
 					print("download completed index: \(index)")
@@ -60,32 +68,34 @@ extension PhotoLibraryModel {
 					try self.saveImage(completion: completion, image: image, imagePath: imageUrl)
 				} catch {
 					print("Unable to load data: \(error) index: \(index)")
-					self.onActionCompleted(completion: completion, image: nil)
+					self.handleComplete(completion: completion, image: nil)
 				}
 			}
 		}
 	}
 
-	private func saveImage(completion: @escaping (UIImage?) -> (), image: UIImage?, imagePath: String) throws {
+	//TODO: completion: ((UIImage) -> ())? - throw custom error if image nil
+	//TODO: saveImage() -> UIImage
+	private func saveImage(completion: ((UIImage?) -> ())?, image: UIImage?, imagePath: String) throws {
 		defer {
-			self.onActionCompleted(completion: completion, image: image)
+			self.handleComplete(completion: completion, image: image)
 		}
 
 		guard let imageData = image?.jpegData(compressionQuality: 1.0) else {
 			return
 		}
 
-		if !manager.fileExists(atPath: self.imageDir.path) {
-			try manager.createDirectory(atPath: imageDir.path, withIntermediateDirectories: true)
+		if !fileManager.fileExists(atPath: self.imageDir.path) {
+			try fileManager.createDirectory(atPath: imageDir.path, withIntermediateDirectories: true)
 		}
 
-		manager.createFile(atPath: imagePath, contents: imageData)
+		fileManager.createFile(atPath: imagePath, contents: imageData)
 	}
 
-	private func onActionCompleted(completion: @escaping (UIImage?) -> (), image: UIImage?) {
+	private func handleComplete(completion: ((UIImage?) -> ())?, image: UIImage?) {
 //		print("model onActionCompleted ")
 		DispatchQueue.main.async {
-			completion(image)
+			completion?(image)
 		}
 	}
 }

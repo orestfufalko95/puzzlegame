@@ -27,7 +27,11 @@ class PhotoLibraryPresenter: LibraryPresenter {
     func detachView() {
         self.view = nil
     }
-    
+
+    func itemsCount() -> Int {
+        return model.itemsCount
+    }
+
     func load(index: Int, completion: @escaping (Model.Item?) -> ()) {
         print("presenter load index: \(index)")
         //TODO set other completion
