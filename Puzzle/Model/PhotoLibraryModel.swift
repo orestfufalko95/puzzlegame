@@ -33,7 +33,7 @@ class PhotoLibraryModel: LibraryModel {
 			self.completeWithSavedFile(completion: completion, imagePath: imagePath)
 		} else {
 			print("model download started index: \(index)")
-			self.downloadItem(index: index, completion: completion, imageUrl: imagePath, url: url)
+			self.downloadItem(index: index, completion: completion, imageUrl: imagePath)
 		}
 	}
 
@@ -48,7 +48,7 @@ extension PhotoLibraryModel {
 		}
 	}
 
-	private func downloadItem(index: Int, completion: @escaping (UIImage?) -> (), imageUrl: String, url: URL) {
+	private func downloadItem(index: Int, completion: @escaping (UIImage?) -> (), imageUrl: String) {
 		DispatchQueue.global(qos: .userInitiated).async {
 			if let imageDownloadUrl = URL(string: self.imagesUrl + String(index)) {
 				do {
@@ -57,7 +57,7 @@ extension PhotoLibraryModel {
 
 					let image: UIImage? = UIImage(data: imageData)
 
-					try self.saveImage(completion: completion, image: image, imagePath: imageUrl, url: url)
+					try self.saveImage(completion: completion, image: image, imagePath: imageUrl)
 				} catch {
 					print("Unable to load data: \(error) index: \(index)")
 					self.onActionCompleted(completion: completion, image: nil)
@@ -66,7 +66,7 @@ extension PhotoLibraryModel {
 		}
 	}
 
-	private func saveImage(completion: @escaping (UIImage?) -> (), image: UIImage?, imagePath: String, url: URL) throws {
+	private func saveImage(completion: @escaping (UIImage?) -> (), image: UIImage?, imagePath: String) throws {
 		defer {
 			self.onActionCompleted(completion: completion, image: image)
 		}
@@ -79,9 +79,7 @@ extension PhotoLibraryModel {
 			try manager.createDirectory(atPath: imageDir.path, withIntermediateDirectories: true)
 		}
 
-//		print("model saveImage url: \(url)")
-		let b: Bool = manager.createFile(atPath: imagePath, contents: imageData)
-//		print("model saveImage isCreated: \(b)")
+		manager.createFile(atPath: imagePath, contents: imageData)
 	}
 
 	private func onActionCompleted(completion: @escaping (UIImage?) -> (), image: UIImage?) {

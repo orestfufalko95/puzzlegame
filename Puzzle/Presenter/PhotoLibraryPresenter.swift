@@ -30,6 +30,7 @@ class PhotoLibraryPresenter: LibraryPresenter {
     
     func load(index: Int, completion: @escaping (Model.Item?) -> ()) {
         print("presenter load index: \(index)")
+        //TODO set other completion
         self.model?.load(index: index, completion: completion)
     }
 }
