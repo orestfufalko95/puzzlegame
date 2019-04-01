@@ -17,14 +17,6 @@ class LibraryTableViewController: UITableViewController {
 
 		self.presenter = PhotoLibraryPresenter(model: PhotoLibraryModel())
 		self.tableView.prefetchDataSource = self
-
-//        self.tableView.register(<#T##cellClass: AnyClass?##AnyClass?#>, forCellReuseIdentifier: <#T##String#>)
-
-		// Uncomment the following line to preserve selection between presentations
-		// self.clearsSelectionOnViewWillAppear = false
-
-		// Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-		// self.navigationItem.rightBarButtonItem = self.editButtonItem
 	}
 
 	override func viewDidAppear(_ animated: Bool) {
@@ -59,11 +51,9 @@ extension LibraryTableViewController: UITableViewDataSourcePrefetching {
 	func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
 		print("prefetchRowsAt index: \(indexPaths.last?.row)")
 
-//		if let indexPath = indexPaths.last, indexPath.row + 1 > tableView.numberOfRows(inSection: indexPath.section) {
-//			self.presenter?.load(index: indexPath.row + 1, completion: { _ in
-//				print("prefetched index \(indexPath.row + 1)")
-//			})
-//		}
+		if let indexPath = indexPaths.last, indexPath.row + 1 > tableView.numberOfRows(inSection: indexPath.section) {
+			self.presenter?.fetchNewItems()
+		}
 	}
 }
 
@@ -71,64 +61,20 @@ extension LibraryTableViewController: UITableViewDataSourcePrefetching {
 extension LibraryTableViewController {
 
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		// #warning Incomplete implementation, return the number of rows
-		return self.presenter?.itemsCount() ?? 0 // 10
+		return self.presenter?.itemsCount ?? 0
 	}
 
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: GaleryPhotoCell.identifier, for: indexPath)
 //		print("start cellForRowAt timestamp: \(Date().timeIntervalSince1970) index: \(indexPath.row)")
-		// Configure the cell...
-		self.presenter?.load(index: indexPath.row, completion: { [weak cell] image in
-			if let newCell = cell as? GaleryPhotoCell, let newImage = image {
-				print("end cellForRowAt timestamp: \(Date().timeIntervalSince1970) index: \(indexPath.row)")
-				if !(self.tableView.indexPathsForVisibleRows?.contains(indexPath) ?? true) {
-					return
-				}
 
-				newCell.photo?.image = newImage
-			}
-		})
+		if let newCell = cell as? GaleryPhotoCell, let newImage = self.presenter?.item(for: indexPath.row) {
+			newCell.photo?.image = newImage
+		}
 
 		return cell
 	}
-
-
-	/*
-	// Override to support conditional editing of the table view.
-	override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-		// Return false if you do not want the specified item to be editable.
-		return true
-	}
-	*/
-
-	/*
-	// Override to support editing the table view.
-	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-		if editingStyle == .delete {
-			// Delete the row from the data source
-			tableView.deleteRows(at: [indexPath], with: .fade)
-		} else if editingStyle == .insert {
-			// Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-		}
-	}
-	*/
-
-	/*
-	// Override to support rearranging the table view.
-	override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-	}
-	*/
-
-	/*
-	// Override to support conditional rearranging of the table view.
-	override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-		// Return false if you do not want the item to be re-orderable.
-		return true
-	}
-	*/
 
 	/*
 	// MARK: - Navigation

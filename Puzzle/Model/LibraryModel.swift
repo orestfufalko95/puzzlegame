@@ -7,8 +7,12 @@
 //
 
 protocol LibraryModel {
-    
-    associatedtype Item
-    
-    func load(index: Int, completion: @escaping (Item?) -> ())
+
+	associatedtype Item
+
+	func load(index: Int, completion: @escaping (Item?) -> ())
+
+	func downloadItems(from index: Int, count: Int)
+
+	func item(for index: Int) -> Item
 }

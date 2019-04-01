@@ -7,34 +7,38 @@
 //
 
 class PhotoLibraryPresenter: LibraryPresenter {
-    
-    typealias View = LibraryTableViewController
-    typealias Model = PhotoLibraryModel
+
+	typealias View = LibraryTableViewController
+	typealias Model = PhotoLibraryModel
+
+	private static let itemFetchCount = 10
 
 	//TODO: is view needed??!!
-    private weak var view: View?
-    
-    private var model: Model!
-    
-    init(model: Model) {
-        self.model = model
-    }
-    
-    func attachView(view: View) {
-        self.view = view
-    }
-    
-    func detachView() {
-        self.view = nil
-    }
+	private weak var view: View?
 
-    func itemsCount() -> Int {
-        return model.itemsCount
-    }
+	private var model: Model!
 
-    func load(index: Int, completion: @escaping (Model.Item?) -> ()) {
-        print("presenter load index: \(index)")
-        //TODO set other completion
-        self.model?.load(index: index, completion: completion)
-    }
+	init(model: Model) {
+		self.model = model
+	}
+
+	func attachView(view: View) {
+		self.view = view
+	}
+
+	func detachView() {
+		self.view = nil
+	}
+
+	var itemsCount: Int {
+		return model.itemsCount
+	}
+
+	func fetchNewItems() {
+		self.model.downloadItems(from: itemsCount, count: PhotoLibraryPresenter.itemFetchCount)
+	}
+
+	func item(for index: Int) -> Model.Item {
+		return self.model.item(for: index)
+	}
 }

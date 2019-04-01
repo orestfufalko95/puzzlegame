@@ -6,17 +6,21 @@
 //  Copyright © 2019 Orest Fufalko. All rights reserved.
 //
 
-protocol LibraryPresenter{
-    
-    associatedtype View: LibraryView
-    associatedtype Model: LibraryModel
-    
-    func attachView(view: View)
-    
-    func detachView()
+protocol LibraryPresenter {
 
-    func itemsCount() -> Int
+	associatedtype View: LibraryView
+	associatedtype Model: LibraryModel
 
-    func load(index: Int, completion: @escaping (Model.Item?) -> ())
+	var itemsCount: Int { get }
+
+	func attachView(view: View)
+
+	func detachView()
+
+//	func load(index: Int, completion: @escaping (Model.Item?) -> ())
+
+	func fetchNewItems()
+
+	func item(for index: Int) -> Model.Item
 }
 

@@ -30,6 +30,10 @@ class PhotoLibraryModel: LibraryModel {
 		}
 	}
 
+	func downloadItems(from index: Int, count: Int) {
+
+	}
+
 	func load(index: Int, completion: @escaping (UIImage?) -> ()) {
 		let url = imageDir.appendingPathComponent("\(index).jpg")
 		let imagePath = url.path
@@ -44,6 +48,10 @@ class PhotoLibraryModel: LibraryModel {
 		}
 	}
 
+	func item(for index: Int) -> UIImage {
+		let imagePath = imageDir.appendingPathComponent("\(index).jpg").path
+		return UIImage(contentsOfFile: imagePath) ?? UIImage()
+	}
 }
 
 // MARK - Helpers
