@@ -10,7 +10,7 @@ import UIKit
 
 //TODO: download 10 images once per request and only then call callback DispatchGroup
 
-class PhotoLibraryModel: LibraryModel {
+struct PhotoLibraryModel: LibraryModel {
 
 	private let imagesUrl = "https://picsum.photos/200/300?image="
 
