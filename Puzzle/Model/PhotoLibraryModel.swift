@@ -106,4 +106,5 @@ private extension PhotoLibraryModel {
 			completion?(image)
 		}
 	}
+
 }

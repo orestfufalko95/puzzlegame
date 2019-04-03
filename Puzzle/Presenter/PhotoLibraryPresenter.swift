@@ -41,4 +41,5 @@ class PhotoLibraryPresenter: LibraryPresenter {
 	func item(for index: Int) -> Model.Item {
 		return self.model.item(for: index)
 	}
+
 }

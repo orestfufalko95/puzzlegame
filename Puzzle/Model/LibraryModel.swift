@@ -15,4 +15,5 @@ protocol LibraryModel {
 	func downloadItems(from index: Int, count: Int)
 
 	func item(for index: Int) -> Item
+
 }

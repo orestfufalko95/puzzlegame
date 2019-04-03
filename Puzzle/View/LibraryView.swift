@@ -11,4 +11,5 @@ protocol LibraryView {
     func showProgress(message: String)
     
     func hideProgress()
+
 }

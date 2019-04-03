@@ -12,4 +12,5 @@ class GaleryPhotoCell: UITableViewCell {
     static let identifier = "GaleryPhotoCell"
     
     @IBOutlet weak var photo: UIImageView?
+
 }

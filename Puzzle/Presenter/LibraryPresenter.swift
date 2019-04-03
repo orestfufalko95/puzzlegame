@@ -22,5 +22,6 @@ protocol LibraryPresenter {
 	func fetchNewItems()
 
 	func item(for index: Int) -> Model.Item
+
 }
 
