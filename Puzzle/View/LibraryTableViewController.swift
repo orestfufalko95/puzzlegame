@@ -10,38 +10,27 @@ import UIKit
 
 class LibraryTableViewController: UITableViewController {
 
-	private var presenter: PhotoLibraryPresenter?
+	private var images = [UIImage]()
+
+	var presenter: ViewOutput?
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		self.presenter = PhotoLibraryPresenter(model: PhotoLibraryModel())
+		ScreenBuilder.initLibraryView(controller: self)
+
+		self.presenter?.handleViewCreated()
+
 		self.tableView.prefetchDataSource = self
 	}
 
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
-
-		self.presenter?.attachView(view: self)
-		tableView.rowHeight = UITableView.automaticDimension
-	}
-
-	override func viewDidDisappear(_ animated: Bool) {
-		super.viewDidDisappear(animated)
-
-		self.presenter?.detachView()
-	}
 }
 
-// MARK: - Library View methods
-extension LibraryTableViewController: LibraryView {
-
-	func showProgress(message: String) {
-
-	}
-
-	func hideProgress() {
-
+// MARK: -  View Input methods
+extension LibraryTableViewController: ViewInput {
+	func handleImagesUpdated(images: [UIImage]) {
+		self.images = images
+		self.tableView.reloadData()
 	}
 }
 
@@ -52,7 +41,7 @@ extension LibraryTableViewController: UITableViewDataSourcePrefetching {
 		print("prefetchRowsAt index: \(indexPaths.last?.row)")
 
 		if let indexPath = indexPaths.last, indexPath.row + 1 > tableView.numberOfRows(inSection: indexPath.section) {
-			self.presenter?.fetchNewItems()
+//			self.presenter?.fetchNewItems()
 		}
 	}
 }
@@ -61,16 +50,16 @@ extension LibraryTableViewController: UITableViewDataSourcePrefetching {
 extension LibraryTableViewController {
 
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return self.presenter?.itemsCount ?? 0
+		return self.images.count
 	}
 
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: GaleryPhotoCell.identifier, for: indexPath)
-//		print("start cellForRowAt timestamp: \(Date().timeIntervalSince1970) index: \(indexPath.row)")
+		print("start cellForRowAt timestamp: \(Date().timeIntervalSince1970) index: \(indexPath.row)")
 
-		if let newCell = cell as? GaleryPhotoCell, let newImage = self.presenter?.item(for: indexPath.row) {
-			newCell.photo?.image = newImage
+		let cell = tableView.dequeueReusableCell(withIdentifier: GaleryPhotoCell.identifier, for: indexPath)
+		if let newCell = cell as? GaleryPhotoCell {
+			newCell.photo?.image = self.images[indexPath.row]
 		}
 
 		return cell

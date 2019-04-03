@@ -6,40 +6,65 @@
 //  Copyright © 2019 Orest Fufalko. All rights reserved.
 //
 
-class PhotoLibraryPresenter: LibraryPresenter {
+import UIKit
 
-	typealias View = LibraryTableViewController
-	typealias Model = PhotoLibraryModel
+class PhotoLibraryPresenter {
 
-	private static let itemFetchCount = 10
+	private weak var view: (UIViewController & ViewInput)?
 
-	//TODO: is view needed??!!
-	private weak var view: View?
+	var model: ModelInput?
 
-	private var model: Model!
-
-	init(model: Model) {
-		self.model = model
-	}
-
-	func attachView(view: View) {
+	init(view: (UIViewController & ViewInput)) {
 		self.view = view
 	}
-
-	func detachView() {
-		self.view = nil
-	}
-
-	var itemsCount: Int {
-		return model.itemsCount
-	}
-
-	func fetchNewItems() {
-		self.model.downloadItems(from: itemsCount, count: PhotoLibraryPresenter.itemFetchCount)
-	}
-
-	func item(for index: Int) -> Model.Item {
-		return self.model.item(for: index)
-	}
-
 }
+
+// MARK: -  View Output methods
+extension PhotoLibraryPresenter: ViewOutput {
+	func handleViewCreated() {
+		self.model?.updateItems()
+	}
+}
+
+// MARK: -  Model Output methods
+extension PhotoLibraryPresenter: ModelOutput {
+	func handleItemsUpdated(images: [UIImage]) {
+		self.view?.handleImagesUpdated(images: images)
+	}
+}
+
+//	typealias View = LibraryTableViewController
+//	typealias Model = PhotoLibraryModel
+//
+//	private static let itemFetchCount = 10
+//
+//	//TODO: is view needed??!!
+//	private weak var view: View?
+//
+//	private var model: Model!
+//
+//	init(model: Model) {
+//		self.model = model
+//	}
+//
+//	func attachView(view: View) {
+//		self.view = view
+//	}
+//
+//	func detachView() {
+//		self.view = nil
+//	}
+//
+//	var itemsCount: Int {
+//		return model.itemsCount
+//	}
+//
+//	func fetchNewItems() {
+//		self.model.downloadItems(from: itemsCount, count: PhotoLibraryPresenter.itemFetchCount)
+//	}
+//
+//	func item(for index: Int) -> Model.Item {
+//		return self.model.item(for: index)
+//	}
+//
+//}

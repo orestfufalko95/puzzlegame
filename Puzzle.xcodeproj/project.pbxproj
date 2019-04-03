@@ -21,6 +21,11 @@
 		6D2BE5E42247F63B00D34A43 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D2BE5E22247F63B00D34A43 /* LaunchScreen.storyboard */; };
 		6D2BE5EF2247F63B00D34A43 /* PuzzleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2BE5EE2247F63B00D34A43 /* PuzzleTests.swift */; };
 		6D2BE5FA2247F63B00D34A43 /* PuzzleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2BE5F92247F63B00D34A43 /* PuzzleUITests.swift */; };
+		92CBDADBF08CA1291EF67154 /* ModelOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBD4F98948E166F46513E7 /* ModelOutput.swift */; };
+		92CBDB6D6BCCCB3362604234 /* ModelInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBDCCA980A5E7EF2EBCAE2 /* ModelInput.swift */; };
+		92CBDB9BA94F50746C7218C6 /* ViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBD929CE1F519F652D210A /* ViewInput.swift */; };
+		92CBDCD87ADDE89D4E5DE20C /* ViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBD3FE963E186C7EA20CE7 /* ViewOutput.swift */; };
+		92CBDEED500E0F9CAD2398CA /* ScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBDC9156C83755DDEA147D /* ScreenBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +66,11 @@
 		6D2BE5F52247F63B00D34A43 /* PuzzleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PuzzleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D2BE5F92247F63B00D34A43 /* PuzzleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleUITests.swift; sourceTree = "<group>"; };
 		6D2BE5FB2247F63B00D34A43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92CBD3FE963E186C7EA20CE7 /* ViewOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewOutput.swift; sourceTree = "<group>"; };
+		92CBD4F98948E166F46513E7 /* ModelOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelOutput.swift; sourceTree = "<group>"; };
+		92CBD929CE1F519F652D210A /* ViewInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewInput.swift; sourceTree = "<group>"; };
+		92CBDC9156C83755DDEA147D /* ScreenBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenBuilder.swift; sourceTree = "<group>"; };
+		92CBDCCA980A5E7EF2EBCAE2 /* ModelInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelInput.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +103,8 @@
 			children = (
 				6D0988A52249F7FF00A39DD8 /* LibraryModel.swift */,
 				6D0988A72249F97D00A39DD8 /* PhotoLibraryModel.swift */,
+				92CBDCCA980A5E7EF2EBCAE2 /* ModelInput.swift */,
+				92CBD4F98948E166F46513E7 /* ModelOutput.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -105,6 +117,8 @@
 				6D09889F2249F18E00A39DD8 /* LibraryView.swift */,
 				6D0988A12249F3D000A39DD8 /* LibraryTableViewController.swift */,
 				6D056FA7224C8D8300E33E57 /* GaleryPhotoCell.swift */,
+				92CBD929CE1F519F652D210A /* ViewInput.swift */,
+				92CBD3FE963E186C7EA20CE7 /* ViewOutput.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -156,6 +170,7 @@
 				6D2BE5D92247F63900D34A43 /* AppDelegate.swift */,
 				6D2BE5E02247F63B00D34A43 /* Assets.xcassets */,
 				6D2BE5E52247F63B00D34A43 /* Info.plist */,
+				92CBDC9156C83755DDEA147D /* ScreenBuilder.swift */,
 			);
 			path = Puzzle;
 			sourceTree = "<group>";
@@ -318,6 +333,11 @@
 				6D056FA8224C8D8300E33E57 /* GaleryPhotoCell.swift in Sources */,
 				6D2BE5DA2247F63900D34A43 /* AppDelegate.swift in Sources */,
 				6D0988A22249F3D000A39DD8 /* LibraryTableViewController.swift in Sources */,
+				92CBDB6D6BCCCB3362604234 /* ModelInput.swift in Sources */,
+				92CBDADBF08CA1291EF67154 /* ModelOutput.swift in Sources */,
+				92CBDB9BA94F50746C7218C6 /* ViewInput.swift in Sources */,
+				92CBDCD87ADDE89D4E5DE20C /* ViewOutput.swift in Sources */,
+				92CBDEED500E0F9CAD2398CA /* ScreenBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
