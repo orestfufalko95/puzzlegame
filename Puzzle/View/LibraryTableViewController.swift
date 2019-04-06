@@ -8,12 +8,17 @@
 
 import UIKit
 
-class LibraryTableViewController: UITableViewController {
+final class LibraryTableViewController: UITableViewController {
 
 	var output: LibraryTableViewControllerOutput?
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+
+		let activityIndicator = UIActivityIndicatorView(style: .gray)
+		activityIndicator.translatesAutoresizingMaskIntoConstraints = true
+		activityIndicator.hidesWhenStopped = true
+		self.tableView.tableFooterView = activityIndicator
 
 		self.output?.handleViewCreated()
 
@@ -26,6 +31,14 @@ extension LibraryTableViewController: LibraryTableViewControllerInput {
 	func handleImagesUpdated() {
 		self.tableView.reloadData()
 	}
+
+	func showLoading() {
+		(self.tableView.tableFooterView as! UIActivityIndicatorView).startAnimating()
+	}
+
+	func hideLoading() {
+		(self.tableView.tableFooterView as! UIActivityIndicatorView).stopAnimating()
+	}
 }
 
 // MARK: - Table view data source prefetching
@@ -35,7 +48,7 @@ extension LibraryTableViewController: UITableViewDataSourcePrefetching {
 		let maxRow: Int = indexPaths.reduce(0, ({ return $0 > $1.row ? $0 : $1.row }))
 		print("prefetchRowsAt index: \(maxRow)")
 
-		self.output?.prefetchIndex(index: maxRow)
+		self.output?.prefetch(index: maxRow)
 	}
 }
 

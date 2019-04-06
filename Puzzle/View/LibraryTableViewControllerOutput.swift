@@ -9,7 +9,7 @@ protocol LibraryTableViewControllerOutput: class {
 
 	func handleViewCreated()
 
-	func prefetchIndex(index: Int)
+	func prefetch(index: Int)
 
 	func photo(index: Int) -> PhotoEntity
 }

@@ -8,4 +8,8 @@ import UIKit
 protocol LibraryTableViewControllerInput {
 
 	func handleImagesUpdated()
+
+	func showLoading()
+
+	func hideLoading()
 }

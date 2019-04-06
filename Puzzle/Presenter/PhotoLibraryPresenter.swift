@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PhotoLibraryPresenter {
+final class PhotoLibraryPresenter {
 
 	private static let startPrefetchBeforeItemsShown = 3
 	private static let itemsPerRequest = 10
@@ -32,11 +32,13 @@ extension PhotoLibraryPresenter: LibraryTableViewControllerOutput {
 	}
 
 	func handleViewCreated() {
+		self.view?.showLoading()
 		self.model?.updateItems()
 	}
 
-	func prefetchIndex(index: Int) {
+	func prefetch(index: Int) {
 		if index > (itemsCount - PhotoLibraryPresenter.startPrefetchBeforeItemsShown) {
+			self.view?.showLoading()
 			self.model?.downloadNewItems(startIndex: self.photos.count, count: PhotoLibraryPresenter.itemsPerRequest)
 		}
 	}
@@ -52,11 +54,12 @@ extension PhotoLibraryPresenter: PhotoLibraryModelOutput {
 	func handleItemsAdded(newPhotos: [PhotoEntity]) {
 		//TODO: check network
 		if self.photos.isEmpty && newPhotos.isEmpty {
-			self.prefetchIndex(index: 0)
+			self.prefetch(index: 0)
 			return
 		}
 
 		self.photos.append(contentsOf: newPhotos)
+		self.view?.hideLoading()
 		self.view?.handleImagesUpdated()
 	}
 }

@@ -10,7 +10,7 @@ import UIKit
 
 //TODO: download 10 images once per request and only then call callback DispatchGroup
 
-class PhotoLibraryModel {
+final class PhotoLibraryModel {
 
 	private let imagesUrl = "https://picsum.photos/200/300?image="
 
@@ -85,6 +85,7 @@ extension PhotoLibraryModel: PhotoLibraryModelInput {
 	}
 }
 
+// MARK: - Helpers
 private extension PhotoLibraryModel {
 
 	func downloadImage(index: Int) throws -> UIImage? {
