@@ -49,7 +49,7 @@ extension PhotoLibraryModel: PhotoLibraryModelInput {
 			}
 
 			DispatchQueue.main.async { [weak self] in
-				self?.presenter?.handleItemsAdded(images: images)
+				self?.presenter?.handleItemsAdded(newPhotos: images)
 			}
 		}
 	}
@@ -80,7 +80,7 @@ extension PhotoLibraryModel: PhotoLibraryModelInput {
 		}
 
 		downloadGroup.notify(queue: DispatchQueue.main) { [weak self] in
-			self?.presenter?.handleItemsAdded(images: newPhotos)
+			self?.presenter?.handleItemsAdded(newPhotos: newPhotos)
 		}
 	}
 }

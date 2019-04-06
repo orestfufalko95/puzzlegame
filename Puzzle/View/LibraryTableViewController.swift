@@ -10,7 +10,6 @@ import UIKit
 
 class LibraryTableViewController: UITableViewController {
 
-
 	var output: LibraryTableViewControllerOutput?
 
 	override func viewDidLoad() {
@@ -33,11 +32,10 @@ extension LibraryTableViewController: LibraryTableViewControllerInput {
 extension LibraryTableViewController: UITableViewDataSourcePrefetching {
 
 	func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-		print("prefetchRowsAt index: \(indexPaths.last?.row)")
+		let maxRow: Int = indexPaths.reduce(0, ({ return $0 > $1.row ? $0 : $1.row }))
+		print("prefetchRowsAt index: \(maxRow)")
 
-		if let indexPath = indexPaths.last, indexPath.row > (tableView.numberOfRows(inSection: indexPath.section) - 3) {
-			self.output?.fetchNewItems()
-		}
+		self.output?.prefetchIndex(index: maxRow)
 	}
 }
 
