@@ -10,61 +10,50 @@ import UIKit
 
 class PhotoLibraryPresenter {
 
-	private weak var view: (UIViewController & ViewInput)?
+	private static let itemsPerRequest = 10
 
-	var model: ModelInput?
+	private weak var view: (UIViewController & LibraryTableViewControllerInput)?
 
-	init(view: (UIViewController & ViewInput)) {
+	private var photos = [PhotoEntity]()
+
+	var model: PhotoLibraryModelInput?
+
+	init(view: (UIViewController & LibraryTableViewControllerInput)) {
 		self.view = view
 	}
 }
 
 // MARK: -  View Output methods
-extension PhotoLibraryPresenter: ViewOutput {
+extension PhotoLibraryPresenter: LibraryTableViewControllerOutput {
+
+	var itemsCount: Int {
+		return self.photos.count
+	}
+
 	func handleViewCreated() {
 		self.model?.updateItems()
+	}
+
+	func fetchNewItems() {
+		self.model?.downloadNewItems(startIndex: self.photos.count, count: PhotoLibraryPresenter.itemsPerRequest)
+	}
+
+	func photo(index: Int) -> PhotoEntity {
+		return self.photos[index]
 	}
 }
 
 // MARK: -  Model Output methods
-extension PhotoLibraryPresenter: ModelOutput {
-	func handleItemsUpdated(images: [UIImage]) {
-		self.view?.handleImagesUpdated(images: images)
+extension PhotoLibraryPresenter: PhotoLibraryModelOutput {
+
+	func handleItemsAdded(newPhotos: [PhotoEntity]) {
+		//TODO: check network
+		if self.photos.isEmpty && newPhotos.isEmpty {
+			self.fetchNewItems()
+			return
+		}
+
+		self.photos.append(contentsOf: newPhotos)
+		self.view?.handleImagesUpdated()
 	}
 }
-
-//	typealias View = LibraryTableViewController
-//	typealias Model = PhotoLibraryModel
-//
-//	private static let itemFetchCount = 10
-//
-//	//TODO: is view needed??!!
-//	private weak var view: View?
-//
-//	private var model: Model!
-//
-//	init(model: Model) {
-//		self.model = model
-//	}
-//
-//	func attachView(view: View) {
-//		self.view = view
-//	}
-//
-//	func detachView() {
-//		self.view = nil
-//	}
-//
-//	var itemsCount: Int {
-//		return model.itemsCount
-//	}
-//
-//	func fetchNewItems() {
-//		self.model.downloadItems(from: itemsCount, count: PhotoLibraryPresenter.itemFetchCount)
-//	}
-//
-//	func item(for index: Int) -> Model.Item {
-//		return self.model.item(for: index)
-//	}
-//
-//}

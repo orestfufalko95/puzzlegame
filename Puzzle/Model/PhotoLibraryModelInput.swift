@@ -3,7 +3,9 @@
 // Copyright (c) 2019 Orest Fufalko. All rights reserved.
 //
 
-protocol ModelInput: class {
+protocol PhotoLibraryModelInput: class {
 
 	func updateItems()
+
+	func downloadNewItems(startIndex: Int, count: Int)
 }

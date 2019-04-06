@@ -10,26 +10,21 @@ import UIKit
 
 class LibraryTableViewController: UITableViewController {
 
-	private var images = [UIImage]()
 
-	var presenter: ViewOutput?
+	var output: LibraryTableViewControllerOutput?
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		ScreenBuilder.initLibraryView(controller: self)
-
-		self.presenter?.handleViewCreated()
+		self.output?.handleViewCreated()
 
 		self.tableView.prefetchDataSource = self
 	}
-
 }
 
 // MARK: -  View Input methods
-extension LibraryTableViewController: ViewInput {
-	func handleImagesUpdated(images: [UIImage]) {
-		self.images = images
+extension LibraryTableViewController: LibraryTableViewControllerInput {
+	func handleImagesUpdated() {
 		self.tableView.reloadData()
 	}
 }
@@ -40,8 +35,8 @@ extension LibraryTableViewController: UITableViewDataSourcePrefetching {
 	func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
 		print("prefetchRowsAt index: \(indexPaths.last?.row)")
 
-		if let indexPath = indexPaths.last, indexPath.row + 1 > tableView.numberOfRows(inSection: indexPath.section) {
-//			self.presenter?.fetchNewItems()
+		if let indexPath = indexPaths.last, indexPath.row > (tableView.numberOfRows(inSection: indexPath.section) - 3) {
+			self.output?.fetchNewItems()
 		}
 	}
 }
@@ -50,16 +45,16 @@ extension LibraryTableViewController: UITableViewDataSourcePrefetching {
 extension LibraryTableViewController {
 
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return self.images.count
+		return self.output?.itemsCount ?? 0
 	}
 
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		print("start cellForRowAt timestamp: \(Date().timeIntervalSince1970) index: \(indexPath.row)")
+//		print("start cellForRowAt timestamp: \(Date().timeIntervalSince1970) index: \(indexPath.row)")
 
 		let cell = tableView.dequeueReusableCell(withIdentifier: GaleryPhotoCell.identifier, for: indexPath)
 		if let newCell = cell as? GaleryPhotoCell {
-			newCell.photo?.image = self.images[indexPath.row]
+			newCell.photo?.image = self.output?.photo(index: indexPath.row).image
 		}
 
 		return cell

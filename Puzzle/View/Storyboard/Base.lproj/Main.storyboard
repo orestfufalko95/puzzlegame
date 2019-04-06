@@ -29,7 +29,7 @@
         <!--Root View Controller-->
         <scene sceneID="1cS-5U-8Fq">
             <objects>
-                <tableViewController id="WRo-db-u5d" customClass="LibraryTableViewController" customModule="Puzzle" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="LibraryTableViewController" id="WRo-db-u5d" customClass="LibraryTableViewController" customModule="Puzzle" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="17Y-Ik-VZ5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

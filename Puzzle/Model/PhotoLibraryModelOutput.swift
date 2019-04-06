@@ -3,9 +3,9 @@
 // Copyright (c) 2019 Orest Fufalko. All rights reserved.
 //
 
-import UIKit
+protocol PhotoLibraryModelOutput: class {
 
-protocol ViewInput {
+	func handleItemsAdded(newPhotos: [PhotoEntity])
 
-	func handleImagesUpdated(images: [UIImage])
 }
+

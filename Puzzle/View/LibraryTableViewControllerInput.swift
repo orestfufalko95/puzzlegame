@@ -5,9 +5,7 @@
 
 import UIKit
 
-protocol ModelOutput: class {
+protocol LibraryTableViewControllerInput {
 
-	func handleItemsUpdated(images: [UIImage])
-
+	func handleImagesUpdated()
 }
-

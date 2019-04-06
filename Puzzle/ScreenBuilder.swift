@@ -9,11 +9,16 @@ struct ScreenBuilder {
 
 	private init(){}
 
-	static func initLibraryView(controller: LibraryTableViewController) {
+	static func initLibraryView() -> UIViewController {
+		let storyboard = UIStoryboard(name: "Main", bundle: nil)
+		let controller = storyboard.instantiateViewController(withIdentifier: "LibraryTableViewController") as! LibraryTableViewController
+
 		let presenter = PhotoLibraryPresenter(view: controller)
 		let model = PhotoLibraryModel(presenter: presenter)
 
 		presenter.model = model
-		controller.presenter = presenter
+		controller.output = presenter
+
+		return controller
 	}
 }
