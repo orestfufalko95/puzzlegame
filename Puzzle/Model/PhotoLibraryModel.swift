@@ -8,8 +8,6 @@
 
 import UIKit
 
-//TODO: download 10 images once per request and only then call callback DispatchGroup
-
 final class PhotoLibraryModel {
 
 	private let imagesUrl = "https://picsum.photos/200/300?image="
@@ -44,8 +42,7 @@ extension PhotoLibraryModel: PhotoLibraryModelInput {
 
 			for index in 0..<itemsCount {
 				let imagePath = self.imageDir.appendingPathComponent("\(index).jpg").path
-				let image = UIImage(contentsOfFile: imagePath) ?? UIImage()
-				images.append(PhotoEntity(image: image))
+				images.append(PhotoEntity(image: UIImage(contentsOfFile: imagePath) ?? UIImage()))
 			}
 
 			DispatchQueue.main.async { [weak self] in
@@ -54,12 +51,12 @@ extension PhotoLibraryModel: PhotoLibraryModelInput {
 		}
 	}
 
+	//TODO: check is already running or check is start index already downloaded
 	func downloadNewItems(startIndex: Int, count: Int) {
 		print("downloadNewItems index: \(startIndex)")
 		let downloadGroup = DispatchGroup()
 
 		var newPhotos = [PhotoEntity]()
-		var workItems: [DispatchWorkItem] = []
 
 		for index in startIndex..<(startIndex + count) {
 			downloadGroup.enter()
@@ -75,7 +72,6 @@ extension PhotoLibraryModel: PhotoLibraryModelInput {
 				}
 			}
 
-			workItems.append(workItem)
 			dispatchQueue.async(execute: workItem)
 		}
 
@@ -96,7 +92,7 @@ private extension PhotoLibraryModel {
 
 			let image: UIImage? = UIImage(data: imageData)
 			let imagePath = self.imageDir.appendingPathComponent("\(index).jpg").path
-			print("model imagePath: \(imagePath)")
+//			print("model imagePath: \(imagePath)")
 
 			try self.saveImage(image: image, imagePath: imagePath)
 

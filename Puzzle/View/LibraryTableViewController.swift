@@ -45,7 +45,7 @@ extension LibraryTableViewController: LibraryTableViewControllerInput {
 extension LibraryTableViewController: UITableViewDataSourcePrefetching {
 
 	func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-		let maxRow: Int = indexPaths.reduce(0, ({ return $0 > $1.row ? $0 : $1.row }))
+		let maxRow = indexPaths.reduce(0, ({ return $0 > $1.row ? $0 : $1.row }))
 		print("prefetchRowsAt index: \(maxRow)")
 
 		self.output?.prefetch(index: maxRow)
