@@ -46,6 +46,11 @@ extension PhotoLibraryPresenter: LibraryTableViewControllerOutput {
 	func photo(index: Int) -> PhotoEntity {
 		return self.photos[index]
 	}
+
+	func photoSelected(index: Int) {
+		let controller = ScreenBuilder.picturePuzzleView(photo: self.photos[index])
+		self.view?.show(controller, sender: nil)
+	}
 }
 
 // MARK: -  Model Output methods
@@ -62,4 +67,6 @@ extension PhotoLibraryPresenter: PhotoLibraryModelOutput {
 		self.view?.hideLoading()
 		self.view?.handleImagesUpdated()
 	}
+
+
 }

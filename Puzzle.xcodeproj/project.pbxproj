@@ -24,6 +24,7 @@
 		92CBDB9BA94F50746C7218C6 /* LibraryTableViewControllerInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBD929CE1F519F652D210A /* LibraryTableViewControllerInput.swift */; };
 		92CBDCD87ADDE89D4E5DE20C /* LibraryTableViewControllerOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBD3FE963E186C7EA20CE7 /* LibraryTableViewControllerOutput.swift */; };
 		92CBDEED500E0F9CAD2398CA /* ScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBDC9156C83755DDEA147D /* ScreenBuilder.swift */; };
+		92CBDF2FC3B2459C2EE6C12F /* PicturePuzzleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBD90BD1B78E3ACD81A04B /* PicturePuzzleViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		92CBD3FE963E186C7EA20CE7 /* LibraryTableViewControllerOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryTableViewControllerOutput.swift; sourceTree = "<group>"; };
 		92CBD4F98948E166F46513E7 /* PhotoLibraryModelOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLibraryModelOutput.swift; sourceTree = "<group>"; };
 		92CBD72EB0F2CE5A5AD386A9 /* PhotoEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoEntity.swift; sourceTree = "<group>"; };
+		92CBD90BD1B78E3ACD81A04B /* PicturePuzzleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PicturePuzzleViewController.swift; sourceTree = "<group>"; };
 		92CBD929CE1F519F652D210A /* LibraryTableViewControllerInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryTableViewControllerInput.swift; sourceTree = "<group>"; };
 		92CBDC9156C83755DDEA147D /* ScreenBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenBuilder.swift; sourceTree = "<group>"; };
 		92CBDCCA980A5E7EF2EBCAE2 /* PhotoLibraryModelInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLibraryModelInput.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				6D056FA7224C8D8300E33E57 /* GaleryPhotoCell.swift */,
 				92CBD929CE1F519F652D210A /* LibraryTableViewControllerInput.swift */,
 				92CBD3FE963E186C7EA20CE7 /* LibraryTableViewControllerOutput.swift */,
+				92CBD90BD1B78E3ACD81A04B /* PicturePuzzleViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				92CBDCD87ADDE89D4E5DE20C /* LibraryTableViewControllerOutput.swift in Sources */,
 				92CBDEED500E0F9CAD2398CA /* ScreenBuilder.swift in Sources */,
 				92CBDB1EF2BB4E04C8EECCA0 /* PhotoEntity.swift in Sources */,
+				92CBDF2FC3B2459C2EE6C12F /* PicturePuzzleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

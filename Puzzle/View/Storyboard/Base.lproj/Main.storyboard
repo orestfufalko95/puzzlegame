@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -80,6 +81,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AAz-CF-vqT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-289" y="-388"/>
+        </scene>
+        <!--Picture Puzzle View Controller-->
+        <scene sceneID="rzj-8b-GVb">
+            <objects>
+                <viewController storyboardIdentifier="PicturePuzzleViewController" id="TdW-kY-7qR" customClass="PicturePuzzleViewController" customModule="Puzzle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jJR-a3-hXf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="NxL-uP-MVo"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RME-KX-BG6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="578" y="-393"/>
         </scene>
         <!--Library-->
         <scene sceneID="MaQ-Wj-Jjy">

@@ -12,12 +12,14 @@ final class LibraryTableViewController: UITableViewController {
 
 	var output: LibraryTableViewControllerOutput?
 
+	private var activityIndicator: UIActivityIndicatorView?
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		let activityIndicator = UIActivityIndicatorView(style: .gray)
-		activityIndicator.translatesAutoresizingMaskIntoConstraints = true
-		activityIndicator.hidesWhenStopped = true
+		activityIndicator = UIActivityIndicatorView(style: .gray)
+		activityIndicator?.translatesAutoresizingMaskIntoConstraints = true
+		activityIndicator?.hidesWhenStopped = true
 		self.tableView.tableFooterView = activityIndicator
 
 		self.output?.handleViewCreated()
@@ -33,17 +35,18 @@ extension LibraryTableViewController: LibraryTableViewControllerInput {
 	}
 
 	func showLoading() {
-		(self.tableView.tableFooterView as! UIActivityIndicatorView).startAnimating()
+		self.activityIndicator?.startAnimating()
 	}
 
 	func hideLoading() {
-		(self.tableView.tableFooterView as! UIActivityIndicatorView).stopAnimating()
+		self.activityIndicator?.stopAnimating()
 	}
 }
 
 // MARK: - Table view data source prefetching
 extension LibraryTableViewController: UITableViewDataSourcePrefetching {
 
+	//TODO: move reduce logic to presenter
 	func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
 		let maxRow = indexPaths.reduce(0, ({ return $0 > $1.row ? $0 : $1.row }))
 		print("prefetchRowsAt index: \(maxRow)")
@@ -69,6 +72,12 @@ extension LibraryTableViewController {
 		}
 
 		return cell
+	}
+
+	public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		super.tableView(tableView, didSelectRowAt: indexPath)
+
+
 	}
 
 	/*
