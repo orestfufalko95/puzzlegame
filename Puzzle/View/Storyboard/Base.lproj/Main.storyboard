@@ -82,16 +82,60 @@
             </objects>
             <point key="canvasLocation" x="-289" y="-388"/>
         </scene>
-        <!--Picture Puzzle View Controller-->
+        <!--Photo Puzzle View Controller-->
         <scene sceneID="rzj-8b-GVb">
             <objects>
-                <viewController storyboardIdentifier="PicturePuzzleViewController" id="TdW-kY-7qR" customClass="PicturePuzzleViewController" customModule="Puzzle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhotoPuzzleViewController" id="TdW-kY-7qR" customClass="PhotoPuzzleViewController" customModule="Puzzle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jJR-a3-hXf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HXl-vL-tap">
+                                <rect key="frame" x="8" y="28" width="359" height="631"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CAz-Yi-c7Y">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="2m4-Wb-AfI">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HYC-jG-bUu">
+                                                    <rect key="frame" x="4" y="14" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="HYC-jG-bUu" firstAttribute="centerX" secondItem="2m4-Wb-AfI" secondAttribute="centerX" id="VNa-GG-tm6"/>
+                                            <constraint firstAttribute="bottom" secondItem="HYC-jG-bUu" secondAttribute="bottom" constant="15" id="XZI-2W-EcD"/>
+                                            <constraint firstItem="HYC-jG-bUu" firstAttribute="top" secondItem="2m4-Wb-AfI" secondAttribute="top" constant="14" id="thH-ym-O5f"/>
+                                        </constraints>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="NxL-uP-MVo" firstAttribute="bottom" secondItem="HXl-vL-tap" secondAttribute="bottom" constant="8" id="Q1i-Ni-WRE"/>
+                            <constraint firstItem="HXl-vL-tap" firstAttribute="leading" secondItem="NxL-uP-MVo" secondAttribute="leading" constant="8" id="jWc-tg-Ulb"/>
+                            <constraint firstItem="NxL-uP-MVo" firstAttribute="trailing" secondItem="HXl-vL-tap" secondAttribute="trailing" constant="8" id="t50-pD-fxh"/>
+                            <constraint firstItem="HXl-vL-tap" firstAttribute="top" secondItem="NxL-uP-MVo" secondAttribute="top" constant="8" id="zxG-Pp-6kf"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="NxL-uP-MVo"/>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="HXl-vL-tap" id="vIB-jN-mBj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RME-KX-BG6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

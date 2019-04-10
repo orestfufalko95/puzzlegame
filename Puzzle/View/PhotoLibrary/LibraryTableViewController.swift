@@ -47,7 +47,6 @@ extension LibraryTableViewController: LibraryTableViewControllerInput {
 extension LibraryTableViewController: UITableViewDataSourcePrefetching {
 
 	func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-
 		self.output?.prefetch(indexes: indexPaths.map({ $0.row }))
 	}
 }
@@ -71,9 +70,7 @@ extension LibraryTableViewController {
 		return cell
 	}
 
-	public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		super.tableView(tableView, didSelectRowAt: indexPath)
-
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		self.output?.photoSelected(index: indexPath.row)
 	}
 
