@@ -17,6 +17,8 @@ final class PhotoLibraryPresenter {
 
 	private var photos = [PhotoEntity]()
 
+	private var isFetchingItems = false
+
 	var model: PhotoLibraryModelInput?
 
 	init(view: (UIViewController & LibraryTableViewControllerInput)) {
@@ -36,8 +38,16 @@ extension PhotoLibraryPresenter: LibraryTableViewControllerOutput {
 		self.model?.updateItems()
 	}
 
-	func prefetch(index: Int) {
-		if index > (itemsCount - PhotoLibraryPresenter.startPrefetchBeforeItemsShown) {
+	func prefetch(indexes: [Int]) {
+		if isFetchingItems {
+			return
+		}
+
+		let maxIndex = indexes.reduce(0, ({ return $0 > $1 ? $0 : $1 }))
+		print("prefetch index: \(maxIndex)")
+
+		if maxIndex > (itemsCount - PhotoLibraryPresenter.startPrefetchBeforeItemsShown) {
+			self.isFetchingItems = true
 			self.view?.showLoading()
 			self.model?.downloadNewItems(startIndex: self.photos.count, count: PhotoLibraryPresenter.itemsPerRequest)
 		}
@@ -57,9 +67,11 @@ extension PhotoLibraryPresenter: LibraryTableViewControllerOutput {
 extension PhotoLibraryPresenter: PhotoLibraryModelOutput {
 
 	func handleItemsAdded(newPhotos: [PhotoEntity]) {
+		self.isFetchingItems = false
+
 		//TODO: check network
 		if self.photos.isEmpty && newPhotos.isEmpty {
-			self.prefetch(index: 0)
+			self.prefetch(indexes: [0])
 			return
 		}
 
@@ -67,6 +79,4 @@ extension PhotoLibraryPresenter: PhotoLibraryModelOutput {
 		self.view?.hideLoading()
 		self.view?.handleImagesUpdated()
 	}
-
-
 }

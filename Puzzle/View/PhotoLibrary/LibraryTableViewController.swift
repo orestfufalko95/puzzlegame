@@ -46,12 +46,9 @@ extension LibraryTableViewController: LibraryTableViewControllerInput {
 // MARK: - Table view data source prefetching
 extension LibraryTableViewController: UITableViewDataSourcePrefetching {
 
-	//TODO: move reduce logic to presenter
 	func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-		let maxRow = indexPaths.reduce(0, ({ return $0 > $1.row ? $0 : $1.row }))
-		print("prefetchRowsAt index: \(maxRow)")
 
-		self.output?.prefetch(index: maxRow)
+		self.output?.prefetch(indexes: indexPaths.map({ $0.row }))
 	}
 }
 
@@ -77,7 +74,7 @@ extension LibraryTableViewController {
 	public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		super.tableView(tableView, didSelectRowAt: indexPath)
 
-
+		self.output?.photoSelected(index: indexPath.row)
 	}
 
 	/*
