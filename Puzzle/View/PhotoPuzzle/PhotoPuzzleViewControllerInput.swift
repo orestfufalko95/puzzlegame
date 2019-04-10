@@ -5,5 +5,5 @@
 
 protocol PhotoPuzzleViewControllerInput: class {
 
-
+	func reload()
 }
