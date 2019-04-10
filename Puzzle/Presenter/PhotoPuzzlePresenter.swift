@@ -59,8 +59,6 @@ extension PhotoPuzzlePresenter: PhotoPuzzleViewControllerOutput {
 
 			startX += puzzleWidth
 		}
-
-		self.view?.reload()
 	}
 
 	func image(for index: Int) -> UIImage {
