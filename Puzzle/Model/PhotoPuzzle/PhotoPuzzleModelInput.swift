@@ -5,4 +5,5 @@
 
 protocol PhotoPuzzleModelInput: class {
 
+	func createPuzzles(photo: PhotoEntity, puzzlesSize: Int)
 }

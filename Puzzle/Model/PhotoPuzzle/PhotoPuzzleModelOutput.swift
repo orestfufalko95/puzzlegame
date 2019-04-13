@@ -3,5 +3,9 @@
 // Copyright (c) 2019 Orest Fufalko. All rights reserved.
 //
 
+import UIKit
+
 protocol PhotoPuzzleModelOutput: class {
+
+	func puzzlesCreated(puzzles: [UIImage])
 }

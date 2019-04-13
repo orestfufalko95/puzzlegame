@@ -16,4 +16,32 @@ final class PhotoPuzzleModel {
 
 extension PhotoPuzzleModel: PhotoPuzzleModelInput {
 
+	func createPuzzles(photo: PhotoEntity, puzzlesSize: Int) {
+		var puzzles = [UIImage]()
+		let puzzleWidth = photo.image.size.width / CGFloat(puzzlesSize)
+		let puzzleHeight = photo.image.size.height / CGFloat(puzzlesSize)
+		let imageOrientation = photo.image.imageOrientation
+
+		var startX = CGFloat(0)
+		for _ in 0..<puzzlesSize {
+			var startY = CGFloat(0)
+
+			for _ in 0..<puzzlesSize {
+
+				if let puzzle = photo.image.cgImage?.cropping(to: CGRect(origin: CGPoint(x: startX, y: startY),
+						size: CGSize(width: puzzleWidth, height: puzzleHeight))) {
+					puzzles.append(UIImage(cgImage: puzzle, scale: 1, orientation: imageOrientation))
+				} else {
+					puzzles.append(UIImage())
+				}
+
+				startY += puzzleHeight
+			}
+
+			startX += puzzleWidth
+		}
+
+		self.output?.puzzlesCreated(puzzles: puzzles)
+	}
+
 }
