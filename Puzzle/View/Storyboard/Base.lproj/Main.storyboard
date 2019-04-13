@@ -91,7 +91,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HXl-vL-tap">
-                                <rect key="frame" x="8" y="28" width="359" height="631"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CAz-Yi-c7Y">
                                     <size key="itemSize" width="50" height="50"/>
@@ -110,15 +110,25 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iId-N4-Xug">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V4l-OT-g3m">
+                                                    <rect key="frame" x="4" y="15" width="42" height="20.5"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </view>
                                         <constraints>
                                             <constraint firstItem="iId-N4-Xug" firstAttribute="top" secondItem="2m4-Wb-AfI" secondAttribute="top" id="3Aa-y4-Wiv"/>
+                                            <constraint firstItem="V4l-OT-g3m" firstAttribute="centerY" secondItem="2m4-Wb-AfI" secondAttribute="centerY" id="45h-jK-BuS"/>
                                             <constraint firstAttribute="trailing" secondItem="iId-N4-Xug" secondAttribute="trailing" id="AKl-97-qKg"/>
                                             <constraint firstItem="iId-N4-Xug" firstAttribute="leading" secondItem="2m4-Wb-AfI" secondAttribute="leading" id="mic-cA-J8S"/>
+                                            <constraint firstItem="V4l-OT-g3m" firstAttribute="centerX" secondItem="2m4-Wb-AfI" secondAttribute="centerX" id="v3d-2U-zD8"/>
                                             <constraint firstAttribute="bottom" secondItem="iId-N4-Xug" secondAttribute="bottom" id="wGG-rV-4ah"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="coordinateLabel" destination="V4l-OT-g3m" id="bOb-Fu-D8B"/>
                                             <outlet property="photo" destination="iId-N4-Xug" id="4EB-qM-IRv"/>
                                         </connections>
                                     </collectionViewCell>
@@ -127,10 +137,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="NxL-uP-MVo" firstAttribute="bottom" secondItem="HXl-vL-tap" secondAttribute="bottom" constant="8" id="Q1i-Ni-WRE"/>
-                            <constraint firstItem="HXl-vL-tap" firstAttribute="top" secondItem="NxL-uP-MVo" secondAttribute="top" constant="8" id="UeP-PA-cs2"/>
-                            <constraint firstItem="HXl-vL-tap" firstAttribute="leading" secondItem="NxL-uP-MVo" secondAttribute="leading" constant="8" id="jWc-tg-Ulb"/>
-                            <constraint firstItem="NxL-uP-MVo" firstAttribute="trailing" secondItem="HXl-vL-tap" secondAttribute="trailing" constant="8" id="t50-pD-fxh"/>
+                            <constraint firstItem="NxL-uP-MVo" firstAttribute="bottom" secondItem="HXl-vL-tap" secondAttribute="bottom" id="Q1i-Ni-WRE"/>
+                            <constraint firstItem="HXl-vL-tap" firstAttribute="top" secondItem="NxL-uP-MVo" secondAttribute="top" id="UeP-PA-cs2"/>
+                            <constraint firstItem="HXl-vL-tap" firstAttribute="leading" secondItem="NxL-uP-MVo" secondAttribute="leading" id="jWc-tg-Ulb"/>
+                            <constraint firstItem="NxL-uP-MVo" firstAttribute="trailing" secondItem="HXl-vL-tap" secondAttribute="trailing" id="t50-pD-fxh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NxL-uP-MVo"/>
                     </view>

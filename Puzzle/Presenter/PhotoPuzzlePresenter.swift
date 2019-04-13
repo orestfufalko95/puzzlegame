@@ -12,20 +12,19 @@ final class PhotoPuzzlePresenter {
 	private weak var view: (UIViewController & PhotoPuzzleViewControllerInput)?
 	private let photo: PhotoEntity!
 
-	private var puzzles: [UIImage] = []
+	private var puzzles: [PuzzleEntity] = []
 
 	var model: PhotoPuzzleModelInput?
 
 	init(view: (UIViewController & PhotoPuzzleViewControllerInput), photo: PhotoEntity) {
 		self.view = view
 		self.photo = photo
-
 	}
 }
 
 extension PhotoPuzzlePresenter: PhotoPuzzleModelOutput {
 
-	func puzzlesCreated(puzzles: [UIImage]) {
+	func puzzlesCreated(puzzles: [PuzzleEntity]) {
 		self.puzzles = puzzles
 
 		self.view?.reload()
@@ -42,7 +41,7 @@ extension PhotoPuzzlePresenter: PhotoPuzzleViewControllerOutput {
 		self.model?.createPuzzles(photo: self.photo, puzzlesSize: PhotoPuzzlePresenter.puzzlesSize)
 	}
 
-	func image(for index: Int) -> UIImage {
-		return self.puzzles[index / PhotoPuzzlePresenter.puzzlesSize + index % PhotoPuzzlePresenter.puzzlesSize]
+	func puzzleEntity(for index: Int) -> PuzzleEntity {
+		return self.puzzles.first(where: { $0.y == index / PhotoPuzzlePresenter.puzzlesSize && $0.x == index % PhotoPuzzlePresenter.puzzlesSize})!
 	}
 }

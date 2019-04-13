@@ -9,4 +9,5 @@ final class PhotoPuzzleCell: UICollectionViewCell {
 	static let identifier = "PhotoPuzzleCell"
 
 	@IBOutlet weak var photo: UIImageView?
+    @IBOutlet weak var coordinateLabel: UILabel?
 }

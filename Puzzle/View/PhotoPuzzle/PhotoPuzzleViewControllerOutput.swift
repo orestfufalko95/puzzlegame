@@ -11,5 +11,5 @@ protocol PhotoPuzzleViewControllerOutput: class {
 
 	func handleViewLoaded()
 
-	func image(for index: Int) -> UIImage
+	func puzzleEntity(for index: Int) -> PuzzleEntity
 }
