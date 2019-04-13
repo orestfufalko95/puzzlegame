@@ -30,6 +30,26 @@ final class PhotoPuzzleViewController: UIViewController {
 		self.collectionView.dataSource = self
 
 		self.output?.handleViewLoaded()
+
+		let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongGesture(gesture:)))
+		self.collectionView.addGestureRecognizer(longPressGesture)
+	}
+
+	@objc func handleLongGesture(gesture: UILongPressGestureRecognizer) {
+		switch (gesture.state) {
+
+		case .began:
+			guard let selectedIndexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView)) else {
+				break
+			}
+			self.collectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
+		case .changed:
+			self.collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
+		case .ended:
+			self.collectionView.endInteractiveMovement()
+		default:
+			self.collectionView.cancelInteractiveMovement()
+		}
 	}
 }
 
@@ -57,6 +77,18 @@ extension PhotoPuzzleViewController: UICollectionViewDataSource {
 
 		return cell
 	}
+
+	public func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
+		return true
+	}
+
+	public func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+		//TODO: OF: update indexes
+		print("Starting Index: \(sourceIndexPath.item)")
+		print("Ending Index: \(destinationIndexPath.item)")
+
+		self.output?.swap(fromIndex: sourceIndexPath.item, toIndex: destinationIndexPath.item)
+	}
 }
 
 extension PhotoPuzzleViewController: UICollectionViewDelegateFlowLayout {
@@ -64,6 +96,6 @@ extension PhotoPuzzleViewController: UICollectionViewDelegateFlowLayout {
 	public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 		let width = collectionView.frame.width * 0.95
 //		print("width: \(width)   rounded: \((width/3).rounded(.down))")
-		return CGSize(width: (width/3).rounded(.down), height: (width/3).rounded(.down))
+		return CGSize(width: (width / 3).rounded(.down), height: (width / 3).rounded(.down))
 	}
 }

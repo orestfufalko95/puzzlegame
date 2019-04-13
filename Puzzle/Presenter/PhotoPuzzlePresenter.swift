@@ -42,6 +42,10 @@ extension PhotoPuzzlePresenter: PhotoPuzzleViewControllerOutput {
 	}
 
 	func puzzleEntity(for index: Int) -> PuzzleEntity {
-		return self.puzzles.first(where: { $0.y == index / PhotoPuzzlePresenter.puzzlesSize && $0.x == index % PhotoPuzzlePresenter.puzzlesSize})!
+		return self.puzzles[index]
+	}
+
+	func swap(fromIndex: Int, toIndex: Int) {
+		self.puzzles.swapAt(fromIndex, toIndex)
 	}
 }

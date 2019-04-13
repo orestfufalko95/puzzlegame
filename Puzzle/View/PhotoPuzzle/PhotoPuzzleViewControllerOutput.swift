@@ -12,4 +12,6 @@ protocol PhotoPuzzleViewControllerOutput: class {
 	func handleViewLoaded()
 
 	func puzzleEntity(for index: Int) -> PuzzleEntity
+
+	func swap(fromIndex: Int, toIndex: Int )
 }

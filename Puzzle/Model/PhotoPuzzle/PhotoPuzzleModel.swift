@@ -23,9 +23,9 @@ extension PhotoPuzzleModel: PhotoPuzzleModelInput {
 		let imageOrientation = photo.image.imageOrientation
 		let image: CGImage? = photo.image.cgImage
 
-		for xCoord in 0..<puzzlesSize {
+		for yCoord in 0..<puzzlesSize {
 
-			for yCoord in 0..<puzzlesSize {
+			for xCoord in 0..<puzzlesSize {
 
 				let startX = puzzleWidth * xCoord
 				let startY = puzzleHeight * yCoord
