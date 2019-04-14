@@ -17,7 +17,7 @@ final class PhotoPuzzlePresenter {
 
 	private var puzzles: [PuzzleEntity] = []
 
-	init(view: (UIViewController & PhotoPuzzleViewControllerInput), photo: PhotoEntity, buildModel: (PhotoPuzzleModelOutput) -> PhotoPuzzleModelInput ) {
+	init(view: (UIViewController & PhotoPuzzleViewControllerInput), photo: PhotoEntity, buildModel: (PhotoPuzzleModelOutput) -> PhotoPuzzleModelInput) {
 		self.view = view
 		self.photo = photo
 		self.model = buildModel(self)
@@ -37,6 +37,14 @@ extension PhotoPuzzlePresenter: PhotoPuzzleViewControllerOutput {
 
 	var puzzlesCount: Int {
 		return self.puzzles.count
+	}
+
+	func puzzlesCellHeight(containerHeight: Int) -> Int {//TODO: why?? extra padding margin bound?
+		return containerHeight / PhotoPuzzlePresenter.puzzlesSize * 19 / 20
+	}
+
+	func puzzlesCellWidth(containerWidth: Int) -> Int {
+		return containerWidth / PhotoPuzzlePresenter.puzzlesSize * 19 / 20
 	}
 
 	func handleViewLoaded() {

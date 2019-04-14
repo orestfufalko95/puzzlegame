@@ -11,22 +11,20 @@ final class PhotoPuzzleViewController: UIViewController {
 
 	var output: PhotoPuzzleViewControllerOutput?
 
-	private var cellWidth: CGFloat = 0
-	private var cellHeight: CGFloat = 0
+	private lazy var cellSize: CGSize = {
+		guard let height = self.output?.puzzlesCellHeight(containerHeight: Int(self.collectionView.frame.height)),
+			  let width = self.output?.puzzlesCellHeight(containerHeight: Int(self.collectionView.frame.width)) else {
+
+			return CGSize(width: self.collectionView.frame.width, height: self.collectionView.frame.height)
+		}
+
+		return CGSize(width: width, height: height)
+	}()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
 		self.collectionView.delegate = self
-
-		let count: Int? = self.output?.puzzlesCount
-//		print("count: \(count)")
-		let puzzlesCount: CGFloat = CGFloat(3)//count ?? 1)
-		self.cellWidth = self.collectionView.frame.size.width / puzzlesCount
-		self.cellHeight = self.collectionView.frame.size.height / puzzlesCount
-		print("\(puzzlesCount)")
-
-//		print(" cellHeight: \(self.cellHeight)")
 		self.collectionView.dataSource = self
 
 		self.output?.handleViewLoaded()
@@ -54,6 +52,7 @@ final class PhotoPuzzleViewController: UIViewController {
 }
 
 extension PhotoPuzzleViewController: PhotoPuzzleViewControllerInput {
+
 	func reload() {
 		self.collectionView.reloadData()
 	}
@@ -83,7 +82,6 @@ extension PhotoPuzzleViewController: UICollectionViewDataSource {
 	}
 
 	public func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-		//TODO: OF: update indexes
 		print("Starting Index: \(sourceIndexPath.item)")
 		print("Ending Index: \(destinationIndexPath.item)")
 
@@ -94,8 +92,6 @@ extension PhotoPuzzleViewController: UICollectionViewDataSource {
 extension PhotoPuzzleViewController: UICollectionViewDelegateFlowLayout {
 
 	public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		let width = collectionView.frame.width * 0.95
-//		print("width: \(width)   rounded: \((width/3).rounded(.down))")
-		return CGSize(width: (width / 3).rounded(.down), height: (width / 3).rounded(.down))
+		return self.cellSize
 	}
 }
