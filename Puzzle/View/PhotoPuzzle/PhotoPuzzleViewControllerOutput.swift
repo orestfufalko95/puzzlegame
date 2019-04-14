@@ -3,8 +3,6 @@
 // Copyright (c) 2019 Orest Fufalko. All rights reserved.
 //
 
-import UIKit
-
 protocol PhotoPuzzleViewControllerOutput: class {
 
 	var puzzlesCount: Int { get }

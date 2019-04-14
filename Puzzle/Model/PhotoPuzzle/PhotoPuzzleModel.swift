@@ -9,8 +9,8 @@ final class PhotoPuzzleModel {
 
 	private var output: PhotoPuzzleModelOutput?
 
-	init(presenter: PhotoPuzzleModelOutput) {
-		self.output = presenter
+	init(output: PhotoPuzzleModelOutput) {
+		self.output = output
 	}
 }
 
@@ -42,5 +42,4 @@ extension PhotoPuzzleModel: PhotoPuzzleModelInput {
 
 		self.output?.puzzlesCreated(puzzles: puzzles)
 	}
-
 }

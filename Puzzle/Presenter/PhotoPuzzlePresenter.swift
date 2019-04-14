@@ -12,13 +12,15 @@ final class PhotoPuzzlePresenter {
 	private weak var view: (UIViewController & PhotoPuzzleViewControllerInput)?
 	private let photo: PhotoEntity!
 
+	//TODO OF: why can not be let
+	private var model: PhotoPuzzleModelInput!
+
 	private var puzzles: [PuzzleEntity] = []
 
-	var model: PhotoPuzzleModelInput?
-
-	init(view: (UIViewController & PhotoPuzzleViewControllerInput), photo: PhotoEntity) {
+	init(view: (UIViewController & PhotoPuzzleViewControllerInput), photo: PhotoEntity, buildModel: (PhotoPuzzleModelOutput) -> PhotoPuzzleModelInput ) {
 		self.view = view
 		self.photo = photo
+		self.model = buildModel(self)
 	}
 }
 

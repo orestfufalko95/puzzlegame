@@ -26,10 +26,10 @@ struct ScreenBuilder {
 		let storyboard = UIStoryboard(name: "Main", bundle: nil)
 		let controller = storyboard.instantiateViewController(withIdentifier: "PhotoPuzzleViewController") as! PhotoPuzzleViewController
 
-		let presenter = PhotoPuzzlePresenter(view: controller, photo: photo)
-		let model = PhotoPuzzleModel(presenter: presenter)
+		let presenter = PhotoPuzzlePresenter(view: controller, photo: photo, buildModel: { output in
+			PhotoPuzzleModel(output: output)
+		})
 
-		presenter.model = model
 		controller.output = presenter
 
 		return controller
