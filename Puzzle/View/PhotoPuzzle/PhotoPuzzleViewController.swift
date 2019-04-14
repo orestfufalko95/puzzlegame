@@ -11,15 +11,7 @@ final class PhotoPuzzleViewController: UIViewController {
 
 	var output: PhotoPuzzleViewControllerOutput?
 
-	private lazy var cellSize: CGSize = {
-		guard let height = self.output?.puzzlesCellHeight(containerHeight: Int(self.collectionView.frame.height)),
-			  let width = self.output?.puzzlesCellHeight(containerHeight: Int(self.collectionView.frame.width)) else {
-
-			return CGSize(width: self.collectionView.frame.width, height: self.collectionView.frame.height)
-		}
-
-		return CGSize(width: width, height: height)
-	}()
+	private var cellSize: CGSize? = nil
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -31,6 +23,14 @@ final class PhotoPuzzleViewController: UIViewController {
 
 		let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongGesture(gesture:)))
 		self.collectionView.addGestureRecognizer(longPressGesture)
+
+		if let height = self.output?.puzzlesCellHeight(containerHeight: Int(self.collectionView.frame.height)),
+		   let width = self.output?.puzzlesCellWidth(containerWidth: Int(self.collectionView.frame.width)) {
+
+			self.cellSize = CGSize(width: width, height: height)
+		} else {
+			self.cellSize = CGSize(width: self.collectionView.frame.width, height: self.collectionView.frame.height)
+		}
 	}
 
 	@objc func handleLongGesture(gesture: UILongPressGestureRecognizer) {
@@ -82,8 +82,7 @@ extension PhotoPuzzleViewController: UICollectionViewDataSource {
 	}
 
 	public func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-		print("Starting Index: \(sourceIndexPath.item)")
-		print("Ending Index: \(destinationIndexPath.item)")
+		print("Starting Index: \(sourceIndexPath.item) Ending Index: \(destinationIndexPath.item)")
 
 		self.output?.swap(fromIndex: sourceIndexPath.item, toIndex: destinationIndexPath.item)
 	}
@@ -92,6 +91,6 @@ extension PhotoPuzzleViewController: UICollectionViewDataSource {
 extension PhotoPuzzleViewController: UICollectionViewDelegateFlowLayout {
 
 	public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		return self.cellSize
+		return self.cellSize!
 	}
 }

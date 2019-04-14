@@ -39,11 +39,11 @@ extension PhotoPuzzlePresenter: PhotoPuzzleViewControllerOutput {
 		return self.puzzles.count
 	}
 
-	func puzzlesCellHeight(containerHeight: Int) -> Int {//TODO: why?? extra padding margin bound?
-		return containerHeight / PhotoPuzzlePresenter.puzzlesSize * 19 / 20
+	func puzzlesCellHeight(containerHeight: Int) -> Int {
+		return containerHeight / PhotoPuzzlePresenter.puzzlesSize
 	}
 
-	func puzzlesCellWidth(containerWidth: Int) -> Int {
+	func puzzlesCellWidth(containerWidth: Int) -> Int {//TODO: why?? extra padding margin bound?
 		return containerWidth / PhotoPuzzlePresenter.puzzlesSize * 19 / 20
 	}
 
