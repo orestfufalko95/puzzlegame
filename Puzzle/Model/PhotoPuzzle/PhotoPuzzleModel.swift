@@ -5,7 +5,7 @@
 
 import UIKit
 
-final class PhotoPuzzleModel {
+struct PhotoPuzzleModel {
 
 	private var output: PhotoPuzzleModelOutput?
 
@@ -17,11 +17,13 @@ final class PhotoPuzzleModel {
 extension PhotoPuzzleModel: PhotoPuzzleModelInput {
 
 	func createPuzzles(photo: PhotoEntity, puzzlesSize: Int) {
-		var puzzles = [PuzzleEntity]()
 		let puzzleWidth: Int = Int(photo.image.size.width) / puzzlesSize
 		let puzzleHeight: Int = Int(photo.image.size.height) / puzzlesSize
 		let imageOrientation = photo.image.imageOrientation
 		let image: CGImage? = photo.image.cgImage
+
+		var puzzles = [PuzzleEntity]()
+		puzzles.reserveCapacity(puzzlesSize * puzzlesSize)
 
 		for yCoord in 0..<puzzlesSize {
 

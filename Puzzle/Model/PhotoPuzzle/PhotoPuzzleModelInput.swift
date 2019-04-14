@@ -3,7 +3,7 @@
 // Copyright (c) 2019 Orest Fufalko. All rights reserved.
 //
 
-protocol PhotoPuzzleModelInput: class {
+protocol PhotoPuzzleModelInput {
 
 	func createPuzzles(photo: PhotoEntity, puzzlesSize: Int)
 }

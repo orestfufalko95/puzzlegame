@@ -21,8 +21,7 @@ final class PhotoPuzzleViewController: UIViewController {
 
 		self.output?.handleViewLoaded()
 
-		let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongGesture(gesture:)))
-		self.collectionView.addGestureRecognizer(longPressGesture)
+		self.collectionView.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongGesture(gesture:))))
 
 		if let height = self.output?.puzzlesCellHeight(containerHeight: Int(self.collectionView.frame.height)),
 		   let width = self.output?.puzzlesCellWidth(containerWidth: Int(self.collectionView.frame.width)) {
@@ -69,8 +68,7 @@ extension PhotoPuzzleViewController: UICollectionViewDataSource {
 
 		if let puzzleCell = cell as? PhotoPuzzleCell {
 			let puzzleEntity: PuzzleEntity! = self.output?.puzzleEntity(for: indexPath.row)
-			let image: UIImage? = puzzleEntity?.image
-			puzzleCell.photo?.image = image
+			puzzleCell.photo?.image = puzzleEntity?.image
 			puzzleCell.coordinateLabel?.text = "\(puzzleEntity.x)-\(puzzleEntity.y)"
 		}
 
