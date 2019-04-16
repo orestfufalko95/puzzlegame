@@ -16,6 +16,14 @@ final class PhotoPuzzleViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
+		self.navigationItem.title = "Puzzle Me"
+		let backItem = UIBarButtonItem()
+		backItem.title = "Something Else"
+		self.navigationItem.hidesBackButton = false
+		self.navigationItem.leftBarButtonItem = backItem
+
+		self.navigationController?.navigationBar.topItem?.title = "asdfasdf"
+
 		self.collectionView.delegate = self
 		self.collectionView.dataSource = self
 
@@ -57,10 +65,26 @@ extension PhotoPuzzleViewController: PhotoPuzzleViewControllerInput {
 	}
 }
 
+extension PhotoPuzzleViewController: UICollectionViewDelegateFlowLayout {
+
+	public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+		return self.cellSize!
+	}
+}
+
 extension PhotoPuzzleViewController: UICollectionViewDataSource {
 
 	public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		return self.output?.puzzlesCount ?? 0
+	}
+
+	public func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
+		return true
+	}
+
+	public func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+		print("Starting Index: \(sourceIndexPath.item) Ending Index: \(destinationIndexPath.item)")
+		self.output?.swap(fromIndex: sourceIndexPath.item, toIndex: destinationIndexPath.item)
 	}
 
 	public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -73,22 +97,5 @@ extension PhotoPuzzleViewController: UICollectionViewDataSource {
 		}
 
 		return cell
-	}
-
-	public func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
-		return true
-	}
-
-	public func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-		print("Starting Index: \(sourceIndexPath.item) Ending Index: \(destinationIndexPath.item)")
-
-		self.output?.swap(fromIndex: sourceIndexPath.item, toIndex: destinationIndexPath.item)
-	}
-}
-
-extension PhotoPuzzleViewController: UICollectionViewDelegateFlowLayout {
-
-	public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		return self.cellSize!
 	}
 }
