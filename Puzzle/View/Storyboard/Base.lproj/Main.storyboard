@@ -137,8 +137,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="HXl-vL-tap" firstAttribute="top" secondItem="NxL-uP-MVo" secondAttribute="top" id="Ep3-Ob-biE"/>
                             <constraint firstItem="NxL-uP-MVo" firstAttribute="bottom" secondItem="HXl-vL-tap" secondAttribute="bottom" id="Q1i-Ni-WRE"/>
-                            <constraint firstItem="HXl-vL-tap" firstAttribute="top" secondItem="NxL-uP-MVo" secondAttribute="top" id="UeP-PA-cs2"/>
                             <constraint firstItem="HXl-vL-tap" firstAttribute="leading" secondItem="NxL-uP-MVo" secondAttribute="leading" id="jWc-tg-Ulb"/>
                             <constraint firstItem="NxL-uP-MVo" firstAttribute="trailing" secondItem="HXl-vL-tap" secondAttribute="trailing" id="t50-pD-fxh"/>
                         </constraints>
