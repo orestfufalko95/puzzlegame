@@ -8,11 +8,14 @@ import UIKit
 final class PhotoPuzzleViewController: UIViewController {
 
 	@IBOutlet private weak var collectionView: UICollectionView!
+	@IBOutlet weak var puzzleSizeSegment: UISegmentedControl!
 
 	var output: PhotoPuzzleViewControllerOutput?
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+
+		self.navigationItem.title = "Puzzle Game"
 
 		self.collectionView.dataSource = self
 
@@ -20,9 +23,17 @@ final class PhotoPuzzleViewController: UIViewController {
 
 		self.collectionView.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongGesture(gesture:))))
 
-		if let size = self.output?.puzzlesSize {
-			self.collectionView.collectionViewLayout = PuzzleCollectionViewFlowLayout(gridSize: size)
-		}
+		self.collectionView.collectionViewLayout = PuzzleCollectionViewFlowLayout(gridSize: { [weak self] in
+			if let size = self?.output?.puzzlesSize {
+				return size
+			} else {
+				return 1
+			}
+		})
+	}
+
+	@IBAction func handlePuzzleSizeSelected(_ sender: Any) {
+		self.output?.handlePuzzleSizeSelected()
 	}
 
 	@objc func handleLongGesture(gesture: UILongPressGestureRecognizer) {
@@ -46,6 +57,11 @@ final class PhotoPuzzleViewController: UIViewController {
 }
 
 extension PhotoPuzzleViewController: PhotoPuzzleViewControllerInput {
+
+	var selectedPuzzleSize: Int {
+		return self.puzzleSizeSegment.selectedSegmentIndex
+	}
+
 
 	func reload() {
 		self.collectionView.reloadData()

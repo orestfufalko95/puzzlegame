@@ -90,8 +90,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Orq-Bm-mvd">
+                                <rect key="frame" x="0.0" y="20" width="375" height="29"/>
+                                <segments>
+                                    <segment title="3x3"/>
+                                    <segment title="4x4"/>
+                                    <segment title="5x5"/>
+                                </segments>
+                                <connections>
+                                    <action selector="handlePuzzleSizeSelected:" destination="TdW-kY-7qR" eventType="valueChanged" id="uZG-5I-QnL"/>
+                                </connections>
+                            </segmentedControl>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HXl-vL-tap">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="611"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CAz-Yi-c7Y">
                                     <size key="itemSize" width="50" height="50"/>
@@ -137,7 +148,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="HXl-vL-tap" firstAttribute="top" secondItem="NxL-uP-MVo" secondAttribute="top" id="Ep3-Ob-biE"/>
+                            <constraint firstItem="NxL-uP-MVo" firstAttribute="trailing" secondItem="Orq-Bm-mvd" secondAttribute="trailing" id="2Au-mB-axf"/>
+                            <constraint firstItem="Orq-Bm-mvd" firstAttribute="leading" secondItem="NxL-uP-MVo" secondAttribute="leading" id="CZg-7z-x1j"/>
+                            <constraint firstItem="HXl-vL-tap" firstAttribute="top" secondItem="Orq-Bm-mvd" secondAttribute="bottom" constant="8" id="Ep3-Ob-biE"/>
+                            <constraint firstItem="Orq-Bm-mvd" firstAttribute="top" secondItem="NxL-uP-MVo" secondAttribute="top" id="IV0-Uy-Fmh"/>
                             <constraint firstItem="NxL-uP-MVo" firstAttribute="bottom" secondItem="HXl-vL-tap" secondAttribute="bottom" id="Q1i-Ni-WRE"/>
                             <constraint firstItem="HXl-vL-tap" firstAttribute="leading" secondItem="NxL-uP-MVo" secondAttribute="leading" id="jWc-tg-Ulb"/>
                             <constraint firstItem="NxL-uP-MVo" firstAttribute="trailing" secondItem="HXl-vL-tap" secondAttribute="trailing" id="t50-pD-fxh"/>
@@ -146,6 +160,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="HXl-vL-tap" id="vIB-jN-mBj"/>
+                        <outlet property="puzzleSizeSegment" destination="Orq-Bm-mvd" id="qPd-zl-aSY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RME-KX-BG6" userLabel="First Responder" sceneMemberID="firstResponder"/>

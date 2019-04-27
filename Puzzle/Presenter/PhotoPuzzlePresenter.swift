@@ -13,7 +13,7 @@ import UIKit
 
 final class PhotoPuzzlePresenter {
 
-	private static let puzzlesSize = 3
+	private static let defaultPuzzlesSize = 3
 
 	private let model: PhotoPuzzleModelInput
 	private let photo: PhotoEntity
@@ -45,11 +45,19 @@ extension PhotoPuzzlePresenter: PhotoPuzzleViewControllerOutput {
 	}
 
 	var puzzlesSize: Int {
-		return PhotoPuzzlePresenter.puzzlesSize
+		if let size = self.view?.selectedPuzzleSize {
+			return PhotoPuzzlePresenter.defaultPuzzlesSize + size
+		} else {
+			return PhotoPuzzlePresenter.defaultPuzzlesSize
+		}
 	}
 
 	func handleViewLoaded() {
-		self.model.createPuzzles(photo: self.photo, puzzlesSize: PhotoPuzzlePresenter.puzzlesSize)
+		self.model.createPuzzles(photo: self.photo, puzzlesSize: self.puzzlesSize)
+	}
+
+	func handlePuzzleSizeSelected() {
+		self.handleViewLoaded()
 	}
 
 	func puzzleEntity(for index: Int) -> PuzzleEntity {

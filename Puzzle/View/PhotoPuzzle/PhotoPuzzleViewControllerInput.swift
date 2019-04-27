@@ -5,5 +5,7 @@
 
 protocol PhotoPuzzleViewControllerInput: class {
 
+	var selectedPuzzleSize: Int { get }
+
 	func reload()
 }
