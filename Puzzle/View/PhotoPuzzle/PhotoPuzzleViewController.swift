@@ -11,24 +11,17 @@ final class PhotoPuzzleViewController: UIViewController {
 
 	var output: PhotoPuzzleViewControllerOutput?
 
-	private var cellSize: CGSize? = nil
-
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		self.collectionView.delegate = self
 		self.collectionView.dataSource = self
 
 		self.output?.handleViewLoaded()
 
 		self.collectionView.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongGesture(gesture:))))
 
-		if let height = self.output?.puzzlesCellHeight(containerHeight: Int(self.collectionView.frame.height)),
-		   let width = self.output?.puzzlesCellWidth(containerWidth: Int(self.collectionView.frame.width)) {
-
-			self.cellSize = CGSize(width: width, height: height)
-		} else {
-			self.cellSize = CGSize(width: self.collectionView.frame.width, height: self.collectionView.frame.height)
+		if let size = self.output?.puzzlesSize {
+			self.collectionView.collectionViewLayout = PuzzleCollectionViewFlowLayout(gridSize: size)
 		}
 	}
 
@@ -36,14 +29,16 @@ final class PhotoPuzzleViewController: UIViewController {
 		switch (gesture.state) {
 
 		case .began:
-			guard let selectedIndexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView)) else {
-				break
+			if let selectedIndexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView)) {
+				self.collectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
 			}
-			self.collectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
+
 		case .changed:
 			self.collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
+
 		case .ended:
 			self.collectionView.endInteractiveMovement()
+
 		default:
 			self.collectionView.cancelInteractiveMovement()
 		}
@@ -54,13 +49,6 @@ extension PhotoPuzzleViewController: PhotoPuzzleViewControllerInput {
 
 	func reload() {
 		self.collectionView.reloadData()
-	}
-}
-
-extension PhotoPuzzleViewController: UICollectionViewDelegateFlowLayout {
-
-	public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		return self.cellSize!
 	}
 }
 

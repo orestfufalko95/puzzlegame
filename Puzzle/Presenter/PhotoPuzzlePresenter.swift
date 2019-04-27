@@ -15,11 +15,10 @@ final class PhotoPuzzlePresenter {
 
 	private static let puzzlesSize = 3
 
-	private weak var view: (UIViewController & PhotoPuzzleViewControllerInput)?
-	private let photo: PhotoEntity!
+	private let model: PhotoPuzzleModelInput
+	private let photo: PhotoEntity
 
-	//TODO OF: why can not be let
-	private var model: PhotoPuzzleModelInput!
+	private weak var view: (UIViewController & PhotoPuzzleViewControllerInput)?
 
 	private var puzzles: [PuzzleEntity] = []
 
@@ -45,16 +44,12 @@ extension PhotoPuzzlePresenter: PhotoPuzzleViewControllerOutput {
 		return self.puzzles.count
 	}
 
-	func puzzlesCellHeight(containerHeight: Int) -> Int {
-		return containerHeight / PhotoPuzzlePresenter.puzzlesSize
-	}
-
-	func puzzlesCellWidth(containerWidth: Int) -> Int {//TODO: why?? extra padding margin bound?
-		return containerWidth / PhotoPuzzlePresenter.puzzlesSize * 19 / 20
+	var puzzlesSize: Int {
+		return PhotoPuzzlePresenter.puzzlesSize
 	}
 
 	func handleViewLoaded() {
-		self.model?.createPuzzles(photo: self.photo, puzzlesSize: PhotoPuzzlePresenter.puzzlesSize)
+		self.model.createPuzzles(photo: self.photo, puzzlesSize: PhotoPuzzlePresenter.puzzlesSize)
 	}
 
 	func puzzleEntity(for index: Int) -> PuzzleEntity {

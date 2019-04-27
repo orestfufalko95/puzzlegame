@@ -7,9 +7,7 @@ protocol PhotoPuzzleViewControllerOutput: class {
 
 	var puzzlesCount: Int { get }
 
-	func puzzlesCellHeight(containerHeight: Int) -> Int
-
-	func puzzlesCellWidth(containerWidth: Int) -> Int
+	var puzzlesSize: Int { get }
 
 	func handleViewLoaded()
 
