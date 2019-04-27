@@ -30,8 +30,9 @@ final class PuzzleCollectionViewFlowLayout: UICollectionViewFlowLayout {
 		}
 
 		let inset: CGRect = collectionView.bounds.inset(by: collectionView.layoutMargins)
-		let cellWidth = (inset.width / CGFloat(gridSize())).rounded(.down)
-		let cellHeight = (inset.height / CGFloat(gridSize())).rounded(.down)
+		let size = CGFloat(self.gridSize())
+		let cellWidth = (inset.width / size).rounded(.down)
+		let cellHeight = (inset.height / size).rounded(.down)
 
 		self.itemSize = CGSize(width: cellWidth, height: cellHeight)
 		self.sectionInset = UIEdgeInsets(top: self.minimumInteritemSpacing, left: 0.0, bottom: 0.0, right: 0.0)
