@@ -16,14 +16,6 @@ final class PhotoPuzzleViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		self.navigationItem.title = "Puzzle Me"
-		let backItem = UIBarButtonItem()
-		backItem.title = "Something Else"
-		self.navigationItem.hidesBackButton = false
-		self.navigationItem.leftBarButtonItem = backItem
-
-		self.navigationController?.navigationBar.topItem?.title = "asdfasdf"
-
 		self.collectionView.delegate = self
 		self.collectionView.dataSource = self
 

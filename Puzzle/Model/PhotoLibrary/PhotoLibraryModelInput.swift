@@ -3,7 +3,7 @@
 // Copyright (c) 2019 Orest Fufalko. All rights reserved.
 //
 
-protocol PhotoLibraryModelInput: class {
+protocol PhotoLibraryModelInput {
 
 	func updateItems()
 

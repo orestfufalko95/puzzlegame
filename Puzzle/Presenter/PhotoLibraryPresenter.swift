@@ -10,19 +10,20 @@ import UIKit
 
 final class PhotoLibraryPresenter {
 
-	private static let startPrefetchBeforeItemsShown = 3
-	private static let itemsPerRequest = 10
+	private static let startPrefetchBeforeItemsShown: Int = 3
+	private static let itemsPerRequest: Int = 10
+
+	private let model: PhotoLibraryModelInput
 
 	private weak var view: (UIViewController & LibraryTableViewControllerInput)?
 
-	private var photos = [PhotoEntity]()
+	private var photos: [PhotoEntity] = [PhotoEntity]()
 
-	private var isFetchingItems = false
+	private var isFetchingItems: Bool = false
 
-	var model: PhotoLibraryModelInput?
-
-	init(view: (UIViewController & LibraryTableViewControllerInput)) {
+	init(view: (UIViewController & LibraryTableViewControllerInput), model: PhotoLibraryModelInput) {
 		self.view = view
+		self.model = model
 	}
 }
 
@@ -35,7 +36,7 @@ extension PhotoLibraryPresenter: LibraryTableViewControllerOutput {
 
 	func handleViewCreated() {
 		self.view?.showLoading()
-		self.model?.updateItems()
+		self.model.updateItems()
 	}
 
 	func prefetch(indexes: [Int]) {
@@ -49,7 +50,7 @@ extension PhotoLibraryPresenter: LibraryTableViewControllerOutput {
 		if maxIndex > (itemsCount - PhotoLibraryPresenter.startPrefetchBeforeItemsShown) {
 			self.isFetchingItems = true
 			self.view?.showLoading()
-			self.model?.downloadNewItems(startIndex: self.photos.count, count: PhotoLibraryPresenter.itemsPerRequest)
+			self.model.downloadNewItems(startIndex: self.photos.count, count: PhotoLibraryPresenter.itemsPerRequest)
 		}
 	}
 

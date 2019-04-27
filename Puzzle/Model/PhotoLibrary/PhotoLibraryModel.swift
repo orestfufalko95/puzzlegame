@@ -19,11 +19,7 @@ final class PhotoLibraryModel {
 
 	private let dispatchQueue = DispatchQueue.global(qos: .userInitiated)
 
-	private var presenter: PhotoLibraryModelOutput?
-
-	init(presenter: PhotoLibraryModelOutput) {
-		self.presenter = presenter
-	}
+	var output: PhotoLibraryModelOutput?
 }
 
 // MARK: -  Model Input methods
@@ -46,7 +42,7 @@ extension PhotoLibraryModel: PhotoLibraryModelInput {
 			}
 
 			DispatchQueue.main.async { [weak self] in
-				self?.presenter?.handleItemsAdded(newPhotos: images)
+				self?.output?.handleItemsAdded(newPhotos: images)
 			}
 		}
 	}
@@ -76,7 +72,7 @@ extension PhotoLibraryModel: PhotoLibraryModelInput {
 		}
 
 		downloadGroup.notify(queue: DispatchQueue.main) { [weak self] in
-			self?.presenter?.handleItemsAdded(newPhotos: newPhotos)
+			self?.output?.handleItemsAdded(newPhotos: newPhotos)
 		}
 	}
 }

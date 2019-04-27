@@ -13,10 +13,10 @@ struct ScreenBuilder {
 		let storyboard = UIStoryboard(name: "Main", bundle: nil)
 		let controller = storyboard.instantiateViewController(withIdentifier: "LibraryTableViewController") as! LibraryTableViewController
 
-		let presenter = PhotoLibraryPresenter(view: controller)
-		let model = PhotoLibraryModel(presenter: presenter)
+		let model = PhotoLibraryModel()
+		let presenter = PhotoLibraryPresenter(view: controller, model: model)
 
-		presenter.model = model
+		model.output = presenter
 		controller.output = presenter
 
 		return controller
@@ -26,10 +26,10 @@ struct ScreenBuilder {
 		let storyboard = UIStoryboard(name: "Main", bundle: nil)
 		let controller = storyboard.instantiateViewController(withIdentifier: "PhotoPuzzleViewController") as! PhotoPuzzleViewController
 
-		let presenter = PhotoPuzzlePresenter(view: controller, photo: photo, buildModel: { output in
-			PhotoPuzzleModel(output: output)
-		})
+		let model: PhotoPuzzleModel = PhotoPuzzleModel()
+		let presenter = PhotoPuzzlePresenter(view: controller, model: model, photo: photo)
 
+		model.output = presenter
 		controller.output = presenter
 
 		return controller

@@ -5,13 +5,9 @@
 
 import UIKit
 
-struct PhotoPuzzleModel {
+final class PhotoPuzzleModel {
 
-	private var output: PhotoPuzzleModelOutput?
-
-	init(output: PhotoPuzzleModelOutput) {
-		self.output = output
-	}
+	var output: PhotoPuzzleModelOutput?
 }
 
 extension PhotoPuzzleModel: PhotoPuzzleModelInput {
