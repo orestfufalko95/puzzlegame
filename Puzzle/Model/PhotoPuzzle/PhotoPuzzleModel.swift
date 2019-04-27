@@ -15,25 +15,25 @@ extension PhotoPuzzleModel: PhotoPuzzleModelInput {
 	func createPuzzles(photo: PhotoEntity, puzzlesSize: Int) {
 		let puzzleWidth: Int = Int(photo.image.size.width) / puzzlesSize
 		let puzzleHeight: Int = Int(photo.image.size.height) / puzzlesSize
-		let imageOrientation = photo.image.imageOrientation
+		let imageOrientation: UIImage.Orientation = photo.image.imageOrientation
 		let image: CGImage? = photo.image.cgImage
 
 		var puzzles = [PuzzleEntity]()
 		puzzles.reserveCapacity(puzzlesSize * puzzlesSize)
 
-		for yCoord in 0..<puzzlesSize {
+		for yCoordinate in 0..<puzzlesSize {
 
-			for xCoord in 0..<puzzlesSize {
+			for xCoordinate in 0..<puzzlesSize {
 
-				let startX = puzzleWidth * xCoord
-				let startY = puzzleHeight * yCoord
+				let startX = puzzleWidth * xCoordinate
+				let startY = puzzleHeight * yCoordinate
 
 				if let puzzle = image?.cropping(to: CGRect(x: startX, y: startY, width: puzzleWidth, height: puzzleHeight)) {
 
 					let puzzleImage = UIImage(cgImage: puzzle, scale: 1, orientation: imageOrientation)
-					puzzles.append(PuzzleEntity(image: puzzleImage, x: xCoord, y: yCoord))
+					puzzles.append(PuzzleEntity(image: puzzleImage, x: xCoordinate, y: yCoordinate))
 				} else {
-					puzzles.append(PuzzleEntity(image: UIImage(), x: xCoord, y: yCoord))
+					puzzles.append(PuzzleEntity(image: UIImage(), x: xCoordinate, y: yCoordinate))
 				}
 			}
 		}

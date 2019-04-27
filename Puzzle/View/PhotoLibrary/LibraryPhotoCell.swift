@@ -1,5 +1,5 @@
 //
-//  GaleryPhotoCell.swift
+//  LibraryPhotoCell.swift
 //  Puzzle
 //
 //  Created by Orest Fufalko on 3/28/19.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-class GaleryPhotoCell: UITableViewCell {
-    static let identifier = "GaleryPhotoCell"
+final class LibraryPhotoCell: UITableViewCell {
+    static let identifier = "LibraryPhotoCell"
     
     @IBOutlet weak var photo: UIImageView?
 

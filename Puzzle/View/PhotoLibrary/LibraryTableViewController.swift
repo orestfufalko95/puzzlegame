@@ -62,10 +62,8 @@ extension LibraryTableViewController {
 
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//		print("start cellForRowAt timestamp: \(Date().timeIntervalSince1970) index: \(indexPath.row)")
-
-		let cell = tableView.dequeueReusableCell(withIdentifier: GaleryPhotoCell.identifier, for: indexPath)
-		if let newCell = cell as? GaleryPhotoCell {
+		let cell = tableView.dequeueReusableCell(withIdentifier: LibraryPhotoCell.identifier, for: indexPath)
+		if let newCell = cell as? LibraryPhotoCell {
 			newCell.photo?.image = self.output?.photo(index: indexPath.row).image
 		}
 
@@ -75,14 +73,4 @@ extension LibraryTableViewController {
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		self.output?.photoSelected(index: indexPath.row)
 	}
-
-	/*
-	// MARK: - Navigation
-
-	// In a storyboard-based application, you will often want to do a little preparation before navigation
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		// Get the new view controller using segue.destination.
-		// Pass the selected object to the new view controller.
-	}
-	*/
 }

@@ -3,7 +3,6 @@
 // Copyright (c) 2019 Orest Fufalko. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 final class PuzzleCollectionViewFlowLayout: UICollectionViewFlowLayout {

@@ -21,7 +21,7 @@
 		92CBD15ECD390DFCEF2971B9 /* PuzzleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBD826EB6DB332CCFED5E5 /* PuzzleEntity.swift */; };
 		92CBD1821ACE6E3C34BD284E /* PhotoPuzzleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBD52D92D6037B5865A2BF /* PhotoPuzzleViewController.swift */; };
 		92CBD1D539A4A68995C2DDD9 /* PhotoLibraryModelInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBDFE153ACDED5E5D7B8B3 /* PhotoLibraryModelInput.swift */; };
-		92CBD4C9AE4E00FFEA8E1193 /* GaleryPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBD2314AC6DE1049B037D2 /* GaleryPhotoCell.swift */; };
+		92CBD4C9AE4E00FFEA8E1193 /* LibraryPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBD2314AC6DE1049B037D2 /* LibraryPhotoCell.swift */; };
 		92CBD52D464746FAD14DA80C /* PhotoPuzzleViewControllerOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBD6E78A388324CA88F316 /* PhotoPuzzleViewControllerOutput.swift */; };
 		92CBD5F7DC886B52AE5B4276 /* PuzzleCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBDE85553326360BC87063 /* PuzzleCollectionViewFlowLayout.swift */; };
 		92CBD74660CC114168278D57 /* PhotoPuzzleViewControllerInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBD16F12A69723FD3BABB1 /* PhotoPuzzleViewControllerInput.swift */; };
@@ -71,7 +71,7 @@
 		92CBD16F12A69723FD3BABB1 /* PhotoPuzzleViewControllerInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPuzzleViewControllerInput.swift; sourceTree = "<group>"; };
 		92CBD1C073E206C6C69D5AEC /* PhotoLibraryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLibraryModel.swift; sourceTree = "<group>"; };
 		92CBD223EF7F2803442F8795 /* PhotoLibraryModelOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLibraryModelOutput.swift; sourceTree = "<group>"; };
-		92CBD2314AC6DE1049B037D2 /* GaleryPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GaleryPhotoCell.swift; sourceTree = "<group>"; };
+		92CBD2314AC6DE1049B037D2 /* LibraryPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryPhotoCell.swift; sourceTree = "<group>"; };
 		92CBD52D92D6037B5865A2BF /* PhotoPuzzleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPuzzleViewController.swift; sourceTree = "<group>"; };
 		92CBD6569B0267E2D8F6FFFD /* LibraryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryTableViewController.swift; sourceTree = "<group>"; };
 		92CBD6E78A388324CA88F316 /* PhotoPuzzleViewControllerOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPuzzleViewControllerOutput.swift; sourceTree = "<group>"; };
@@ -241,7 +241,7 @@
 		92CBDCAEADBFAEC086254DD1 /* PhotoLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				92CBD2314AC6DE1049B037D2 /* GaleryPhotoCell.swift */,
+				92CBD2314AC6DE1049B037D2 /* LibraryPhotoCell.swift */,
 				92CBD6569B0267E2D8F6FFFD /* LibraryTableViewController.swift */,
 				92CBD9A5184EB9B0AC87CF29 /* LibraryTableViewControllerInput.swift */,
 				92CBD78D402BE94972053CBC /* LibraryTableViewControllerOutput.swift */,
@@ -388,7 +388,7 @@
 				92CBDFB342A05EAAC51D3312 /* PhotoLibraryModel.swift in Sources */,
 				92CBD1D539A4A68995C2DDD9 /* PhotoLibraryModelInput.swift in Sources */,
 				92CBD05C3F945E337E32D55A /* PhotoLibraryModelOutput.swift in Sources */,
-				92CBD4C9AE4E00FFEA8E1193 /* GaleryPhotoCell.swift in Sources */,
+				92CBD4C9AE4E00FFEA8E1193 /* LibraryPhotoCell.swift in Sources */,
 				92CBDFDD6BCB78C96C69AEA4 /* LibraryTableViewController.swift in Sources */,
 				92CBDCFAD50AC3145D2D2B0C /* LibraryTableViewControllerInput.swift in Sources */,
 				92CBDB0BEACD18C8B1A8D160 /* LibraryTableViewControllerOutput.swift in Sources */,
