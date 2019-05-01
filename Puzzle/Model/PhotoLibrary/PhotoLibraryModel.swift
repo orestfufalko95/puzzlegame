@@ -10,7 +10,7 @@ import UIKit
 
 final class PhotoLibraryModel {
 
-	private let imagesUrl = "https://picsum.photos/200/300?image="
+	private let imagesUrl = "https://picsum.photos/300/300?image="
 
 	private let fileManager: FileManager = FileManager.default
 	private let imageDir: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
@@ -88,7 +88,6 @@ private extension PhotoLibraryModel {
 
 			let image: UIImage? = UIImage(data: imageData)
 			let imagePath = self.imageDir.appendingPathComponent("\(index).jpg").path
-//			print("model imagePath: \(imagePath)")
 
 			try self.saveImage(image: image, imagePath: imagePath)
 

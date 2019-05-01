@@ -42,6 +42,7 @@ final class PhotoPuzzleViewController: UIViewController {
 		case .began:
 			if let selectedIndexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView)) {
 				self.collectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
+				self.collectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: .centeredVertically)
 			}
 
 		case .changed:

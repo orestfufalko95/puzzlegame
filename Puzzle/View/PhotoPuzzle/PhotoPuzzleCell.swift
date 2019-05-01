@@ -10,4 +10,10 @@ final class PhotoPuzzleCell: UICollectionViewCell {
 
 	@IBOutlet weak var photo: UIImageView?
     @IBOutlet weak var coordinateLabel: UILabel?
+
+	override var isSelected: Bool {
+		didSet {
+			alpha = isSelected ? 0.5 : 1.0
+		}
+	}
 }

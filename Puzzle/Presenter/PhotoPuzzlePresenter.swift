@@ -32,7 +32,7 @@ final class PhotoPuzzlePresenter {
 extension PhotoPuzzlePresenter: PhotoPuzzleModelOutput {
 
 	func puzzlesCreated(puzzles: [PuzzleEntity]) {
-		self.puzzles = puzzles
+		self.puzzles = puzzles.shuffled()
 
 		self.view?.reload()
 	}
@@ -65,6 +65,13 @@ extension PhotoPuzzlePresenter: PhotoPuzzleViewControllerOutput {
 	}
 
 	func swap(fromIndex: Int, toIndex: Int) {
-		self.puzzles.swapAt(fromIndex, toIndex)
+		let changedPuzzle = self.puzzles.remove(at: fromIndex)
+		self.puzzles.insert(changedPuzzle, at: toIndex)
+
+		if self.puzzles.reduce(into: true, { $0 = $0 && (self.puzzles.firstIndex(of: $1) == $1.y * puzzlesSize + $1.x) }) {
+			let alertController = UIAlertController(title: "Puzzle Completed", message: nil, preferredStyle: .alert)
+			alertController.addAction(UIAlertAction(title: "OK", style: .default))
+			self.view?.present(alertController, animated: true)
+		}
 	}
 }
