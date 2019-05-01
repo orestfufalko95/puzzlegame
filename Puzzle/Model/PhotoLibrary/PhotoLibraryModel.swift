@@ -62,7 +62,7 @@ extension PhotoLibraryModel: PhotoLibraryModelInput {
 					newPhotos.append(PhotoEntity(image: try self?.downloadImage(index: index)))
 					downloadGroup.leave()
 				} catch {
-					print("Unable to load data: \(error) index: \(index)")
+//					print("Unable to load data: \(error) index: \(index)")
 					newPhotos.append(PhotoEntity(image: UIImage()))
 					downloadGroup.leave()
 				}

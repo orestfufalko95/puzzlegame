@@ -80,7 +80,7 @@ extension PhotoPuzzleViewController: UICollectionViewDataSource {
 	}
 
 	public func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-		print("Starting Index: \(sourceIndexPath.item) Ending Index: \(destinationIndexPath.item)")
+//		print("Starting Index: \(sourceIndexPath.item) Ending Index: \(destinationIndexPath.item)")
 		self.output?.swap(fromIndex: sourceIndexPath.item, toIndex: destinationIndexPath.item)
 	}
 

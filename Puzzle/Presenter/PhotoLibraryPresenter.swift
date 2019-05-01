@@ -45,7 +45,7 @@ extension PhotoLibraryPresenter: LibraryTableViewControllerOutput {
 		}
 
 		let maxIndex = indexes.reduce(0, ({ return $0 > $1 ? $0 : $1 }))
-		print("prefetch index: \(maxIndex)")
+//		print("prefetch index: \(maxIndex)")
 
 		if maxIndex > (itemsCount - PhotoLibraryPresenter.startPrefetchBeforeItemsShown) {
 			self.isFetchingItems = true

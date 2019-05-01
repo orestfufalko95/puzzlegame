@@ -6,6 +6,5 @@
 protocol PhotoLibraryModelOutput: class {
 
 	func handleItemsAdded(newPhotos: [PhotoEntity])
-
 }
 
