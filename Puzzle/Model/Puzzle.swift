@@ -5,7 +5,7 @@
 
 import UIKit
 
-struct PuzzleEntity: Equatable {
+struct Puzzle: Equatable {
 
 	let image: UIImage
 	let x: Int

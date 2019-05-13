@@ -88,7 +88,7 @@ extension PhotoPuzzleViewController: UICollectionViewDataSource {
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoPuzzleCell.identifier, for: indexPath)
 
 		if let puzzleCell = cell as? PhotoPuzzleCell {
-			let puzzleEntity: PuzzleEntity! = self.output?.puzzleEntity(for: indexPath.row)
+			let puzzleEntity: Puzzle! = self.output?.puzzleEntity(for: indexPath.row)
 			puzzleCell.photo?.image = puzzleEntity?.image
 			puzzleCell.coordinateLabel?.text = "\(puzzleEntity.x)-\(puzzleEntity.y)"
 		}

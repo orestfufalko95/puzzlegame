@@ -22,7 +22,7 @@ struct ScreenBuilder {
 		return controller
 	}
 
-	static func picturePuzzleView(photo: PhotoEntity) -> UIViewController {
+	static func picturePuzzleView(photo: Photo) -> UIViewController {
 		let storyboard = UIStoryboard(name: "Main", bundle: nil)
 		let controller = storyboard.instantiateViewController(withIdentifier: "PhotoPuzzleViewController") as! PhotoPuzzleViewController
 

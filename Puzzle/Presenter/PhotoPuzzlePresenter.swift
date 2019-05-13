@@ -5,24 +5,18 @@
 
 import UIKit
 
-// collection view inset UIEdgeInset
-// Back button on puzzle - normal name
-// UICollectionLayout or FlowLayout
-// uisegmentcontroll - asdd 3*3 4*4 5*5 puzzle size
-// handle device rotation
-
 final class PhotoPuzzlePresenter {
 
 	private static let defaultPuzzlesSize = 3
 
 	private let model: PhotoPuzzleModelInput
-	private let photo: PhotoEntity
+	private let photo: Photo
 
 	private weak var view: (UIViewController & PhotoPuzzleViewControllerInput)?
 
-	private var puzzles: [PuzzleEntity] = []
+	private var puzzles: [Puzzle] = []
 
-	init(view: (UIViewController & PhotoPuzzleViewControllerInput), model: PhotoPuzzleModelInput, photo: PhotoEntity) {
+	init(view: (UIViewController & PhotoPuzzleViewControllerInput), model: PhotoPuzzleModelInput, photo: Photo) {
 		self.view = view
 		self.model = model
 		self.photo = photo
@@ -31,7 +25,7 @@ final class PhotoPuzzlePresenter {
 
 extension PhotoPuzzlePresenter: PhotoPuzzleModelOutput {
 
-	func puzzlesCreated(puzzles: [PuzzleEntity]) {
+	func puzzlesCreated(puzzles: [Puzzle]) {
 		self.puzzles = puzzles.shuffled()
 
 		self.view?.reload()
@@ -60,7 +54,7 @@ extension PhotoPuzzlePresenter: PhotoPuzzleViewControllerOutput {
 		self.handleViewLoaded()
 	}
 
-	func puzzleEntity(for index: Int) -> PuzzleEntity {
+	func puzzleEntity(for index: Int) -> Puzzle {
 		return self.puzzles[index]
 	}
 

@@ -5,5 +5,5 @@
 
 protocol PhotoPuzzleModelOutput {
 
-	func puzzlesCreated(puzzles: [PuzzleEntity])
+	func puzzlesCreated(puzzles: [Puzzle])
 }

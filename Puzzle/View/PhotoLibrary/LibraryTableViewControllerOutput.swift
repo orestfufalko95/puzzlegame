@@ -11,7 +11,7 @@ protocol LibraryTableViewControllerOutput: class {
 
 	func prefetch(indexes: [Int])
 
-	func photo(index: Int) -> PhotoEntity
+	func photo(index: Int) -> Photo
 
 	func photoSelected(index: Int)
 }

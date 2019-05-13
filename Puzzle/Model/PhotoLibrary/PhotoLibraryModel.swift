@@ -34,11 +34,11 @@ extension PhotoLibraryModel: PhotoLibraryModelInput {
 				print("Unable to load data: \(error) index: \(index)")
 			}
 
-			var images = [PhotoEntity]()
+			var images = [Photo]()
 
 			for index in 0..<itemsCount {
 				let imagePath = self.imageDir.appendingPathComponent("\(index).jpg").path
-				images.append(PhotoEntity(image: UIImage(contentsOfFile: imagePath) ?? UIImage()))
+				images.append(Photo(image: UIImage(contentsOfFile: imagePath) ?? UIImage()))
 			}
 
 			DispatchQueue.main.async { [weak self] in
@@ -52,18 +52,18 @@ extension PhotoLibraryModel: PhotoLibraryModelInput {
 		print("downloadNewItems index: \(startIndex)")
 		let downloadGroup = DispatchGroup()
 
-		var newPhotos = [PhotoEntity]()
+		var newPhotos = [Photo]()
 
 		for index in startIndex..<(startIndex + count) {
 			downloadGroup.enter()
 
 			let workItem = DispatchWorkItem(flags: .inheritQoS) { [weak self] in
 				do {
-					newPhotos.append(PhotoEntity(image: try self?.downloadImage(index: index)))
+					newPhotos.append(Photo(image: try self?.downloadImage(index: index)))
 					downloadGroup.leave()
 				} catch {
 //					print("Unable to load data: \(error) index: \(index)")
-					newPhotos.append(PhotoEntity(image: UIImage()))
+					newPhotos.append(Photo(image: UIImage()))
 					downloadGroup.leave()
 				}
 			}

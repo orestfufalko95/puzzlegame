@@ -17,7 +17,7 @@ final class PhotoLibraryPresenter {
 
 	private weak var view: (UIViewController & LibraryTableViewControllerInput)?
 
-	private var photos: [PhotoEntity] = [PhotoEntity]()
+	private var photos: [Photo] = [Photo]()
 
 	private var isFetchingItems: Bool = false
 
@@ -54,7 +54,7 @@ extension PhotoLibraryPresenter: LibraryTableViewControllerOutput {
 		}
 	}
 
-	func photo(index: Int) -> PhotoEntity {
+	func photo(index: Int) -> Photo {
 		return self.photos[index]
 	}
 
@@ -67,7 +67,7 @@ extension PhotoLibraryPresenter: LibraryTableViewControllerOutput {
 // MARK: -  Model Output methods
 extension PhotoLibraryPresenter: PhotoLibraryModelOutput {
 
-	func handleItemsAdded(newPhotos: [PhotoEntity]) {
+	func handleItemsAdded(newPhotos: [Photo]) {
 		self.isFetchingItems = false
 
 		//TODO: check network

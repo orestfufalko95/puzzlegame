@@ -13,7 +13,7 @@ protocol PhotoPuzzleViewControllerOutput: class {
 
 	func handlePuzzleSizeSelected()
 
-	func puzzleEntity(for index: Int) -> PuzzleEntity
+	func puzzleEntity(for index: Int) -> Puzzle
 
 	func swap(fromIndex: Int, toIndex: Int )
 }

@@ -5,5 +5,5 @@
 
 protocol PhotoPuzzleModelInput {
 
-	func createPuzzles(photo: PhotoEntity, puzzlesSize: Int)
+	func createPuzzles(photo: Photo, puzzlesSize: Int)
 }

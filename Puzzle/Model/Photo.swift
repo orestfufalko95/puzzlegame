@@ -5,7 +5,7 @@
 
 import UIKit
 
-struct PhotoEntity {
+struct Photo {
 
 	let image: UIImage!
 }
