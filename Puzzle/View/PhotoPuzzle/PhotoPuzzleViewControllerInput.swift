@@ -8,4 +8,10 @@ protocol PhotoPuzzleViewControllerInput: class {
 	var selectedPuzzleSize: Int { get }
 
 	func reload()
+
+	func setTime(seconds: Int)
+
+	func setTimerView()
+
+	func setStartView()
 }

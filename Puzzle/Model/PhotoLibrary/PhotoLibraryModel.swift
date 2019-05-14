@@ -59,7 +59,7 @@ extension PhotoLibraryModel: PhotoLibraryModelInput {
 
 			let workItem = DispatchWorkItem(flags: .inheritQoS) { [weak self] in
 				do {
-					newPhotos.append(Photo(image: try self?.downloadImage(index: index)))
+					newPhotos.append(Photo(image: try self?.downloadImage(index: index) ?? UIImage()))
 					downloadGroup.leave()
 				} catch {
 //					print("Unable to load data: \(error) index: \(index)")

@@ -5,7 +5,13 @@
 
 import UIKit
 
-struct Photo {
+class Photo {
 
 	let image: UIImage!
+
+	var complitionTime: Int = 0
+
+	init(image: UIImage) {
+		self.image = image
+	}
 }

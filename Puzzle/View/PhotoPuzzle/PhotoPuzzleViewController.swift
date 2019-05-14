@@ -12,6 +12,10 @@ final class PhotoPuzzleViewController: UIViewController {
 
 	var output: PhotoPuzzleViewControllerOutput?
 
+	private lazy var startButton: UIBarButtonItem = { [weak self] in
+		return UIBarButtonItem(title: "Start", style: .plain, target: self, action: #selector(self?.handleStart))
+	}()
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
@@ -20,6 +24,8 @@ final class PhotoPuzzleViewController: UIViewController {
 		self.collectionView.dataSource = self
 
 		self.output?.handleViewLoaded()
+
+		self.setStartView()
 
 		self.collectionView.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongGesture(gesture:))))
 
@@ -36,7 +42,11 @@ final class PhotoPuzzleViewController: UIViewController {
 		self.output?.handlePuzzleSizeSelected()
 	}
 
-	@objc func handleLongGesture(gesture: UILongPressGestureRecognizer) {
+	@objc private func handleStart() {
+		self.output?.startGame()
+	}
+
+	@objc private func handleLongGesture(gesture: UILongPressGestureRecognizer) {
 		switch (gesture.state) {
 
 		case .began:
@@ -66,6 +76,19 @@ extension PhotoPuzzleViewController: PhotoPuzzleViewControllerInput {
 
 	func reload() {
 		self.collectionView.reloadData()
+	}
+
+	func setTime(seconds: Int) {
+		self.navigationItem.rightBarButtonItem?.title = String(seconds)
+
+	}
+
+	func setTimerView() {
+		self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: nil, style: .plain, target: nil, action: nil)
+	}
+
+	func setStartView() {
+		self.navigationItem.rightBarButtonItem = startButton
 	}
 }
 

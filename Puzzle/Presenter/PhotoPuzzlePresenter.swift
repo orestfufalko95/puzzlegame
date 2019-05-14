@@ -10,23 +10,33 @@ final class PhotoPuzzlePresenter {
 	private static let defaultPuzzlesSize = 3
 
 	private let model: PhotoPuzzleModelInput
-	private let photo: Photo
+	private var photo: Photo
 
 	private weak var view: (UIViewController & PhotoPuzzleViewControllerInput)?
 
 	private var puzzles: [Puzzle] = []
+	private var seconds: Int = 0
+
+	private var timer: Timer? = nil
 
 	init(view: (UIViewController & PhotoPuzzleViewControllerInput), model: PhotoPuzzleModelInput, photo: Photo) {
 		self.view = view
 		self.model = model
 		self.photo = photo
 	}
+
+	private func resetView() {
+		self.timer?.invalidate()
+		self.timer = nil
+
+		self.view?.setStartView()
+	}
 }
 
 extension PhotoPuzzlePresenter: PhotoPuzzleModelOutput {
 
 	func puzzlesCreated(puzzles: [Puzzle]) {
-		self.puzzles = puzzles.shuffled()
+		self.puzzles = puzzles
 
 		self.view?.reload()
 	}
@@ -51,6 +61,7 @@ extension PhotoPuzzlePresenter: PhotoPuzzleViewControllerOutput {
 	}
 
 	func handlePuzzleSizeSelected() {
+		self.resetView()
 		self.handleViewLoaded()
 	}
 
@@ -63,9 +74,30 @@ extension PhotoPuzzlePresenter: PhotoPuzzleViewControllerOutput {
 		self.puzzles.insert(changedPuzzle, at: toIndex)
 
 		if self.puzzles.reduce(into: true, { $0 = $0 && (self.puzzles.firstIndex(of: $1) == $1.y * puzzlesSize + $1.x) }) {
-			let alertController = UIAlertController(title: "Puzzle Completed", message: nil, preferredStyle: .alert)
+
+			self.resetView()
+			self.photo.complitionTime = self.seconds
+
+			let alertController = UIAlertController(title: "Puzzle Completed in \(seconds) seconds", message: nil, preferredStyle: .alert)
 			alertController.addAction(UIAlertAction(title: "OK", style: .default))
 			self.view?.present(alertController, animated: true)
 		}
+	}
+
+	func startGame() {
+		self.seconds = 0
+
+		self.puzzles.shuffle()
+		self.view?.reload()
+
+		self.view?.setTimerView()
+		self.view?.setTime(seconds: self.seconds)
+
+		self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] _ in
+			self?.seconds += 1
+
+			self?.view?.setTime(seconds: self?.seconds ?? 0)
+		})
+		self.timer?.fire()
 	}
 }
