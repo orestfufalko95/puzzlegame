@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main Tab Bar Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="bOj-AV-1Do">
             <objects>
-                <tabBarController id="H7E-DJ-B7W" customClass="MainTabBarController" customModule="Puzzle" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController useStoryboardIdentifierAsRestorationIdentifier="YES" id="H7E-DJ-B7W" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sbL-JF-a7K">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -21,6 +21,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="sC0-Yr-5oa" kind="relationship" relationship="viewControllers" id="Ugt-Ty-UcH"/>
+                        <segue destination="9PF-ig-cfb" kind="relationship" relationship="viewControllers" id="UKa-MU-mQ2"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="70a-15-AgR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -156,6 +157,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RME-KX-BG6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="578" y="-393"/>
+        </scene>
+        <!--History View Controller-->
+        <scene sceneID="FGx-2h-bJV">
+            <objects>
+                <tableViewController storyboardIdentifier="HistoryViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9PF-ig-cfb" customClass="HistoryViewController" customModule="Puzzle" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="wsw-ee-lJD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="FtK-ma-lwT">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FtK-ma-lwT" id="sEp-5H-K2U">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="9PF-ig-cfb" id="udR-WI-wrv"/>
+                            <outlet property="delegate" destination="9PF-ig-cfb" id="eFF-we-HZQ"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" systemItem="history" id="Bxg-zF-iGL"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WIC-Za-HsC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1233" y="-1115"/>
         </scene>
         <!--Library-->
         <scene sceneID="MaQ-Wj-Jjy">

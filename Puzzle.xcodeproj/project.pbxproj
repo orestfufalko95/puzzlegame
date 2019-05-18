@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		6D0988A42249F5BC00A39DD8 /* PhotoLibraryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0988A32249F5BC00A39DD8 /* PhotoLibraryPresenter.swift */; };
 		6D2BE5DA2247F63900D34A43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2BE5D92247F63900D34A43 /* AppDelegate.swift */; };
-		6D2BE5DC2247F63900D34A43 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2BE5DB2247F63900D34A43 /* MainTabBarController.swift */; };
 		6D2BE5DF2247F63900D34A43 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D2BE5DD2247F63900D34A43 /* Main.storyboard */; };
 		6D2BE5E12247F63B00D34A43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D2BE5E02247F63B00D34A43 /* Assets.xcassets */; };
 		6D2BE5E42247F63B00D34A43 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D2BE5E22247F63B00D34A43 /* LaunchScreen.storyboard */; };
@@ -21,6 +20,7 @@
 		92CBD15ECD390DFCEF2971B9 /* Puzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBD826EB6DB332CCFED5E5 /* Puzzle.swift */; };
 		92CBD1821ACE6E3C34BD284E /* PhotoPuzzleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBD52D92D6037B5865A2BF /* PhotoPuzzleViewController.swift */; };
 		92CBD1D539A4A68995C2DDD9 /* PhotoLibraryModelInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBDFE153ACDED5E5D7B8B3 /* PhotoLibraryModelInput.swift */; };
+		92CBD425F7EB067724D9DB4E /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBDDA782EB9F55E3EDEFAC /* HistoryViewController.swift */; };
 		92CBD4C9AE4E00FFEA8E1193 /* LibraryPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBD2314AC6DE1049B037D2 /* LibraryPhotoCell.swift */; };
 		92CBD52D464746FAD14DA80C /* PhotoPuzzleViewControllerOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBD6E78A388324CA88F316 /* PhotoPuzzleViewControllerOutput.swift */; };
 		92CBD5F7DC886B52AE5B4276 /* PuzzleCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBDE85553326360BC87063 /* PuzzleCollectionViewFlowLayout.swift */; };
@@ -57,7 +57,6 @@
 		6D0988A32249F5BC00A39DD8 /* PhotoLibraryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryPresenter.swift; sourceTree = "<group>"; };
 		6D2BE5D62247F63900D34A43 /* Puzzle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Puzzle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D2BE5D92247F63900D34A43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6D2BE5DB2247F63900D34A43 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		6D2BE5DE2247F63900D34A43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6D2BE5E02247F63B00D34A43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6D2BE5E32247F63B00D34A43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -85,6 +84,7 @@
 		92CBDA7A15B74BB336095FC4 /* PhotoPuzzleModelInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPuzzleModelInput.swift; sourceTree = "<group>"; };
 		92CBDC9156C83755DDEA147D /* ScreenBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenBuilder.swift; sourceTree = "<group>"; };
 		92CBDCB032569700402A6F36 /* PhotoPuzzleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPuzzleCell.swift; sourceTree = "<group>"; };
+		92CBDDA782EB9F55E3EDEFAC /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		92CBDE85553326360BC87063 /* PuzzleCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuzzleCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		92CBDFE153ACDED5E5D7B8B3 /* PhotoLibraryModelInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLibraryModelInput.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -129,9 +129,9 @@
 			isa = PBXGroup;
 			children = (
 				6D09889C2249F05D00A39DD8 /* Storyboard */,
-				6D2BE5DB2247F63900D34A43 /* MainTabBarController.swift */,
 				92CBDCAEADBFAEC086254DD1 /* PhotoLibrary */,
 				92CBD43975F06D639EC234D0 /* PhotoPuzzle */,
+				92CBD916A340DDF7EB4DE491 /* History */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -236,6 +236,14 @@
 				92CBDE85553326360BC87063 /* PuzzleCollectionViewFlowLayout.swift */,
 			);
 			path = PhotoPuzzle;
+			sourceTree = "<group>";
+		};
+		92CBD916A340DDF7EB4DE491 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				92CBDDA782EB9F55E3EDEFAC /* HistoryViewController.swift */,
+			);
+			path = History;
 			sourceTree = "<group>";
 		};
 		92CBDCAEADBFAEC086254DD1 /* PhotoLibrary */ = {
@@ -380,7 +388,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D2BE5DC2247F63900D34A43 /* MainTabBarController.swift in Sources */,
 				6D0988A42249F5BC00A39DD8 /* PhotoLibraryPresenter.swift in Sources */,
 				6D2BE5DA2247F63900D34A43 /* AppDelegate.swift in Sources */,
 				92CBDEED500E0F9CAD2398CA /* ScreenBuilder.swift in Sources */,
@@ -402,6 +409,7 @@
 				92CBD13CB6D5A447D44DC238 /* PhotoPuzzleCell.swift in Sources */,
 				92CBD15ECD390DFCEF2971B9 /* Puzzle.swift in Sources */,
 				92CBD5F7DC886B52AE5B4276 /* PuzzleCollectionViewFlowLayout.swift in Sources */,
+				92CBD425F7EB067724D9DB4E /* HistoryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

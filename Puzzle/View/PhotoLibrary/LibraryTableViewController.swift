@@ -17,7 +17,7 @@ final class LibraryTableViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		self.navigationItem.title = "Library"
+		self.title = "Library"
 
 		activityIndicator = UIActivityIndicatorView(style: .gray)
 		activityIndicator?.translatesAutoresizingMaskIntoConstraints = true
