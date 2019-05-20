@@ -63,7 +63,18 @@ extension LibraryTableViewController {
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: LibraryPhotoCell.identifier, for: indexPath)
 		if let newCell = cell as? LibraryPhotoCell {
-			newCell.photo?.image = self.output?.photo(index: indexPath.row).image
+			guard let photo = self.output?.photo(index: indexPath.row) else {
+				return cell
+			}
+
+			newCell.photo?.image = photo.image
+			newCell.puzzleTimeLabel.isHidden = photo.puzzleTime == 0
+
+			if photo.puzzleTime != 0 {
+				let seconds: Int = photo.puzzleTime % 60
+				let minutes: Int = (photo.puzzleTime / 60) % 60
+				newCell.puzzleTimeLabel.text = String(format: "%02d:%02d", minutes, seconds)
+			}
 		}
 
 		return cell

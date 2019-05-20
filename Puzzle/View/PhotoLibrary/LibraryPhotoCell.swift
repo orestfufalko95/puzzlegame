@@ -12,5 +12,6 @@ final class LibraryPhotoCell: UITableViewCell {
     static let identifier = "LibraryPhotoCell"
     
     @IBOutlet weak var photo: UIImageView?
-
+    @IBOutlet weak var puzzleTimeLabel: UILabel!
+    
 }
