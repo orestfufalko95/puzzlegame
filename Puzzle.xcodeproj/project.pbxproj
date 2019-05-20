@@ -20,10 +20,10 @@
 		92CBD15ECD390DFCEF2971B9 /* Puzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBD826EB6DB332CCFED5E5 /* Puzzle.swift */; };
 		92CBD1821ACE6E3C34BD284E /* PhotoPuzzleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBD52D92D6037B5865A2BF /* PhotoPuzzleViewController.swift */; };
 		92CBD1D539A4A68995C2DDD9 /* PhotoLibraryModelInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBDFE153ACDED5E5D7B8B3 /* PhotoLibraryModelInput.swift */; };
-		92CBD425F7EB067724D9DB4E /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBDDA782EB9F55E3EDEFAC /* HistoryViewController.swift */; };
 		92CBD4C9AE4E00FFEA8E1193 /* LibraryPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBD2314AC6DE1049B037D2 /* LibraryPhotoCell.swift */; };
 		92CBD52D464746FAD14DA80C /* PhotoPuzzleViewControllerOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBD6E78A388324CA88F316 /* PhotoPuzzleViewControllerOutput.swift */; };
 		92CBD5F7DC886B52AE5B4276 /* PuzzleCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBDE85553326360BC87063 /* PuzzleCollectionViewFlowLayout.swift */; };
+		92CBD7195B3576E7C5D83B28 /* PhotoHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBDC49CD628BE2A9E8B554 /* PhotoHistoryModel.swift */; };
 		92CBD74660CC114168278D57 /* PhotoPuzzleViewControllerInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBD16F12A69723FD3BABB1 /* PhotoPuzzleViewControllerInput.swift */; };
 		92CBD74E9AF98E433F3A0935 /* PhotoPuzzleModelInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBDA7A15B74BB336095FC4 /* PhotoPuzzleModelInput.swift */; };
 		92CBD9377A88CC2F8F6AE487 /* PhotoPuzzleModelOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBD700A4F2A66B6CEFA5DE /* PhotoPuzzleModelOutput.swift */; };
@@ -32,7 +32,7 @@
 		92CBDCFAD50AC3145D2D2B0C /* LibraryTableViewControllerInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBD9A5184EB9B0AC87CF29 /* LibraryTableViewControllerInput.swift */; };
 		92CBDD77B5005864B431A111 /* PhotoPuzzlePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBD7BE1CA3684FD4980687 /* PhotoPuzzlePresenter.swift */; };
 		92CBDEED500E0F9CAD2398CA /* ScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBDC9156C83755DDEA147D /* ScreenBuilder.swift */; };
-		92CBDFB342A05EAAC51D3312 /* PhotoLibraryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBD1C073E206C6C69D5AEC /* PhotoLibraryModel.swift */; };
+		92CBDFB342A05EAAC51D3312 /* PhotoDownloadsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBD1C073E206C6C69D5AEC /* PhotoDownloadsModel.swift */; };
 		92CBDFDD6BCB78C96C69AEA4 /* LibraryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBD6569B0267E2D8F6FFFD /* LibraryTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -68,7 +68,7 @@
 		6D2BE5F92247F63B00D34A43 /* PuzzleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleUITests.swift; sourceTree = "<group>"; };
 		6D2BE5FB2247F63B00D34A43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92CBD16F12A69723FD3BABB1 /* PhotoPuzzleViewControllerInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPuzzleViewControllerInput.swift; sourceTree = "<group>"; };
-		92CBD1C073E206C6C69D5AEC /* PhotoLibraryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLibraryModel.swift; sourceTree = "<group>"; };
+		92CBD1C073E206C6C69D5AEC /* PhotoDownloadsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDownloadsModel.swift; sourceTree = "<group>"; };
 		92CBD223EF7F2803442F8795 /* PhotoLibraryModelOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLibraryModelOutput.swift; sourceTree = "<group>"; };
 		92CBD2314AC6DE1049B037D2 /* LibraryPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryPhotoCell.swift; sourceTree = "<group>"; };
 		92CBD52D92D6037B5865A2BF /* PhotoPuzzleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPuzzleViewController.swift; sourceTree = "<group>"; };
@@ -82,9 +82,9 @@
 		92CBD8D5A82D494B905DEECB /* PhotoPuzzleModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPuzzleModel.swift; sourceTree = "<group>"; };
 		92CBD9A5184EB9B0AC87CF29 /* LibraryTableViewControllerInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryTableViewControllerInput.swift; sourceTree = "<group>"; };
 		92CBDA7A15B74BB336095FC4 /* PhotoPuzzleModelInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPuzzleModelInput.swift; sourceTree = "<group>"; };
+		92CBDC49CD628BE2A9E8B554 /* PhotoHistoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoHistoryModel.swift; sourceTree = "<group>"; };
 		92CBDC9156C83755DDEA147D /* ScreenBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenBuilder.swift; sourceTree = "<group>"; };
 		92CBDCB032569700402A6F36 /* PhotoPuzzleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPuzzleCell.swift; sourceTree = "<group>"; };
-		92CBDDA782EB9F55E3EDEFAC /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		92CBDE85553326360BC87063 /* PuzzleCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuzzleCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		92CBDFE153ACDED5E5D7B8B3 /* PhotoLibraryModelInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLibraryModelInput.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -131,7 +131,6 @@
 				6D09889C2249F05D00A39DD8 /* Storyboard */,
 				92CBDCAEADBFAEC086254DD1 /* PhotoLibrary */,
 				92CBD43975F06D639EC234D0 /* PhotoPuzzle */,
-				92CBD916A340DDF7EB4DE491 /* History */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -209,9 +208,10 @@
 		92CBD032A12A042A002F2331 /* PhotoLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				92CBD1C073E206C6C69D5AEC /* PhotoLibraryModel.swift */,
+				92CBD1C073E206C6C69D5AEC /* PhotoDownloadsModel.swift */,
 				92CBDFE153ACDED5E5D7B8B3 /* PhotoLibraryModelInput.swift */,
 				92CBD223EF7F2803442F8795 /* PhotoLibraryModelOutput.swift */,
+				92CBDC49CD628BE2A9E8B554 /* PhotoHistoryModel.swift */,
 			);
 			path = PhotoLibrary;
 			sourceTree = "<group>";
@@ -236,14 +236,6 @@
 				92CBDE85553326360BC87063 /* PuzzleCollectionViewFlowLayout.swift */,
 			);
 			path = PhotoPuzzle;
-			sourceTree = "<group>";
-		};
-		92CBD916A340DDF7EB4DE491 /* History */ = {
-			isa = PBXGroup;
-			children = (
-				92CBDDA782EB9F55E3EDEFAC /* HistoryViewController.swift */,
-			);
-			path = History;
 			sourceTree = "<group>";
 		};
 		92CBDCAEADBFAEC086254DD1 /* PhotoLibrary */ = {
@@ -392,7 +384,7 @@
 				6D2BE5DA2247F63900D34A43 /* AppDelegate.swift in Sources */,
 				92CBDEED500E0F9CAD2398CA /* ScreenBuilder.swift in Sources */,
 				92CBDB1EF2BB4E04C8EECCA0 /* Photo.swift in Sources */,
-				92CBDFB342A05EAAC51D3312 /* PhotoLibraryModel.swift in Sources */,
+				92CBDFB342A05EAAC51D3312 /* PhotoDownloadsModel.swift in Sources */,
 				92CBD1D539A4A68995C2DDD9 /* PhotoLibraryModelInput.swift in Sources */,
 				92CBD05C3F945E337E32D55A /* PhotoLibraryModelOutput.swift in Sources */,
 				92CBD4C9AE4E00FFEA8E1193 /* LibraryPhotoCell.swift in Sources */,
@@ -409,7 +401,7 @@
 				92CBD13CB6D5A447D44DC238 /* PhotoPuzzleCell.swift in Sources */,
 				92CBD15ECD390DFCEF2971B9 /* Puzzle.swift in Sources */,
 				92CBD5F7DC886B52AE5B4276 /* PuzzleCollectionViewFlowLayout.swift in Sources */,
-				92CBD425F7EB067724D9DB4E /* HistoryViewController.swift in Sources */,
+				92CBD7195B3576E7C5D83B28 /* PhotoHistoryModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,5 +7,5 @@ protocol PhotoLibraryModelInput {
 
 	func updateItems()
 
-	func downloadNewItems(startIndex: Int, count: Int)
+	func fetchNewItems(startIndex: Int, count: Int)
 }

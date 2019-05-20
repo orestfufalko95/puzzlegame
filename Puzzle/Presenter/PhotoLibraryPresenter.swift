@@ -21,9 +21,14 @@ final class PhotoLibraryPresenter {
 
 	private var isFetchingItems: Bool = false
 
-	init(view: (UIViewController & LibraryTableViewControllerInput), model: PhotoLibraryModelInput) {
+	let title: String
+	let isPrefetchEnabled: Bool
+
+	init(view: (UIViewController & LibraryTableViewControllerInput), model: PhotoLibraryModelInput, title: String, isPrefetchEnabled: Bool) {
 		self.view = view
 		self.model = model
+		self.title = title
+		self.isPrefetchEnabled = isPrefetchEnabled
 	}
 }
 
@@ -35,8 +40,13 @@ extension PhotoLibraryPresenter: LibraryTableViewControllerOutput {
 	}
 
 	func handleViewCreated() {
+		print("PhotoLibraryPresenter handleViewCreated")
 		self.view?.showLoading()
 		self.model.updateItems()
+
+		if !self.isPrefetchEnabled {
+			self.subscribeToNotifications()
+		}
 	}
 
 	func prefetch(indexes: [Int]) {
@@ -45,12 +55,11 @@ extension PhotoLibraryPresenter: LibraryTableViewControllerOutput {
 		}
 
 		let maxIndex = indexes.reduce(0, ({ return $0 > $1 ? $0 : $1 }))
-//		print("prefetch index: \(maxIndex)")
 
 		if maxIndex > (itemsCount - PhotoLibraryPresenter.startPrefetchBeforeItemsShown) {
 			self.isFetchingItems = true
 			self.view?.showLoading()
-			self.model.downloadNewItems(startIndex: self.photos.count, count: PhotoLibraryPresenter.itemsPerRequest)
+			self.model.fetchNewItems(startIndex: self.photos.count, count: PhotoLibraryPresenter.itemsPerRequest)
 		}
 	}
 
@@ -59,7 +68,7 @@ extension PhotoLibraryPresenter: LibraryTableViewControllerOutput {
 	}
 
 	func photoSelected(index: Int) {
-		let controller = ScreenBuilder.picturePuzzleView(photo: self.photos[index])
+		let controller = ScreenBuilder.picturePuzzleView(photo: self.photos[index], index: index)
 		self.view?.show(controller, sender: nil)
 	}
 }
@@ -71,7 +80,7 @@ extension PhotoLibraryPresenter: PhotoLibraryModelOutput {
 		self.isFetchingItems = false
 
 		//TODO: check network
-		if self.photos.isEmpty && newPhotos.isEmpty {
+		if self.photos.isEmpty && newPhotos.isEmpty && self.isPrefetchEnabled {
 			self.prefetch(indexes: [0])
 			return
 		}
@@ -79,5 +88,25 @@ extension PhotoLibraryPresenter: PhotoLibraryModelOutput {
 		self.photos.append(contentsOf: newPhotos)
 		self.view?.hideLoading()
 		self.view?.handleImagesUpdated()
+	}
+}
+
+extension Notification.Name {
+
+	static let newPuzzleCompleted = Notification.Name(AppDelegate.puzzleCompletedNotification)
+}
+
+// MARK: -  Helpers
+private extension PhotoLibraryPresenter {
+
+	func subscribeToNotifications() {
+		NotificationCenter.default.addObserver(self, selector: #selector(self.fetchNewItem(notification:)),
+				name: Notification.Name.newPuzzleCompleted, object: nil)
+	}
+
+	@objc func fetchNewItem(notification: Notification) {
+		if let photoIndex: Int = notification.userInfo![AppDelegate.puzzlePhotoIndex] as? Int {
+			self.model.fetchNewItems(startIndex: photoIndex, count: 1)
+		}
 	}
 }

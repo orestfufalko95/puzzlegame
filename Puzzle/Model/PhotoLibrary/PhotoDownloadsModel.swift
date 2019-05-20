@@ -1,5 +1,5 @@
 //
-//  PhotoLibraryModel.swift
+//  PhotoDownloadsModel.swift
 //  Puzzle
 //
 //  Created by Orest Fufalko on 3/26/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class PhotoLibraryModel {
+final class PhotoDownloadsModel {
 
 	private let imagesUrl = "https://picsum.photos/300/300?image="
 
@@ -23,7 +23,7 @@ final class PhotoLibraryModel {
 }
 
 // MARK: -  Model Input methods
-extension PhotoLibraryModel: PhotoLibraryModelInput {
+extension PhotoDownloadsModel: PhotoLibraryModelInput {
 	func updateItems() {
 		dispatchQueue.async {
 			var itemsCount = 0
@@ -34,21 +34,21 @@ extension PhotoLibraryModel: PhotoLibraryModelInput {
 				print("Unable to load data: \(error) index: \(index)")
 			}
 
-			var images = [Photo]()
+			var photos = [Photo]()
 
 			for index in 0..<itemsCount {
 				let imagePath = self.imageDir.appendingPathComponent("\(index).jpg").path
-				images.append(Photo(image: UIImage(contentsOfFile: imagePath) ?? UIImage()))
+				photos.append(Photo(image: UIImage(contentsOfFile: imagePath) ?? UIImage()))
 			}
 
 			DispatchQueue.main.async { [weak self] in
-				self?.output?.handleItemsAdded(newPhotos: images)
+				self?.output?.handleItemsAdded(newPhotos: photos)
 			}
 		}
 	}
 
 	//TODO: check is already running or check is start index already downloaded
-	func downloadNewItems(startIndex: Int, count: Int) {
+	func fetchNewItems(startIndex: Int, count: Int) {
 		print("downloadNewItems index: \(startIndex)")
 		let downloadGroup = DispatchGroup()
 
@@ -78,7 +78,7 @@ extension PhotoLibraryModel: PhotoLibraryModelInput {
 }
 
 // MARK: - Helpers
-private extension PhotoLibraryModel {
+private extension PhotoDownloadsModel {
 
 	func downloadImage(index: Int) throws -> UIImage? {
 		if let imageDownloadUrl: URL = URL(string: self.imagesUrl + String(index)) {

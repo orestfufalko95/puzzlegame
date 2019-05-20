@@ -7,6 +7,10 @@ protocol LibraryTableViewControllerOutput: class {
 
 	var itemsCount: Int { get }
 
+	var title: String { get }
+
+	var isPrefetchEnabled: Bool { get }
+
 	func handleViewCreated()
 
 	func prefetch(indexes: [Int])

@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class LibraryTableViewController: UITableViewController {
+class LibraryTableViewController: UITableViewController {
 
 	var output: LibraryTableViewControllerOutput?
 
@@ -17,7 +17,7 @@ final class LibraryTableViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		self.title = "Library"
+		self.title = self.output?.title
 
 		activityIndicator = UIActivityIndicatorView(style: .gray)
 		activityIndicator?.translatesAutoresizingMaskIntoConstraints = true
@@ -26,7 +26,7 @@ final class LibraryTableViewController: UITableViewController {
 
 		self.output?.handleViewCreated()
 
-		self.tableView.prefetchDataSource = self
+		self.tableView.prefetchDataSource = (self.output?.isPrefetchEnabled ?? false) ? self : nil
 	}
 }
 
@@ -59,7 +59,6 @@ extension LibraryTableViewController {
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return self.output?.itemsCount ?? 0
 	}
-
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: LibraryPhotoCell.identifier, for: indexPath)

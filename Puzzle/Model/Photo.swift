@@ -9,7 +9,7 @@ class Photo {
 
 	let image: UIImage!
 
-	var complitionTime: Int = 0
+	var puzzleTime: Int = 0
 
 	init(image: UIImage) {
 		self.image = image

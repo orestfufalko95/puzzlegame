@@ -11,13 +11,17 @@ import UIKit
 @UIApplicationMain
 final class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    static let puzzleTimeKey: String = "puzzleTimeKey"
+    static let puzzleCompletedNotification: String = "notificationNewPuzzleCompleted"
+    static let puzzlePhotoIndex = "puzzlePhotoIndex"
+
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
         let window = UIWindow()
-        let controller = ScreenBuilder.main()
+        let controller = ScreenBuilder.mainView()
         window.rootViewController = controller
         self.window = window
         self.window?.makeKeyAndVisible()

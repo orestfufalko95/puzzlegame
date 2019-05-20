@@ -40,4 +40,28 @@ extension PhotoPuzzleModel: PhotoPuzzleModelInput {
 
 		self.output?.puzzlesCreated(puzzles: puzzles)
 	}
+
+	func saveCompletedPuzzle(photo: Photo, index: Int) {
+		let userDefaults = UserDefaults.standard
+
+		var puzzleTimes: [Int]?
+
+		puzzleTimes = userDefaults.array(forKey: AppDelegate.puzzleTimeKey) as? [Int]
+
+		if (puzzleTimes == nil) {
+			puzzleTimes = [Int](repeating: 0, count: index + 1)
+		}
+
+		if puzzleTimes!.count <= index {
+			puzzleTimes!.append(contentsOf: [Int](repeating: 0, count: index - puzzleTimes!.count + 1))
+		}
+
+		puzzleTimes?[index] = photo.puzzleTime
+
+		userDefaults.set(puzzleTimes, forKey: AppDelegate.puzzleTimeKey)
+		userDefaults.synchronize()
+
+		let userInfo: [String: Int] = [AppDelegate.puzzlePhotoIndex: index]
+		NotificationCenter.default.post(name: Notification.Name.newPuzzleCompleted, object: self, userInfo: userInfo)
+	}
 }

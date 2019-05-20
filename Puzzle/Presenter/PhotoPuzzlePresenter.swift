@@ -10,6 +10,7 @@ final class PhotoPuzzlePresenter {
 	private static let defaultPuzzlesSize = 3
 
 	private let model: PhotoPuzzleModelInput
+	private let photoIndex: Int
 	private var photo: Photo
 
 	private weak var view: (UIViewController & PhotoPuzzleViewControllerInput)?
@@ -19,10 +20,11 @@ final class PhotoPuzzlePresenter {
 
 	private var timer: Timer? = nil
 
-	init(view: (UIViewController & PhotoPuzzleViewControllerInput), model: PhotoPuzzleModelInput, photo: Photo) {
+	init(view: (UIViewController & PhotoPuzzleViewControllerInput), model: PhotoPuzzleModelInput, photo: Photo, photoIndex: Int) {
 		self.view = view
 		self.model = model
 		self.photo = photo
+		self.photoIndex = photoIndex
 	}
 
 	private func resetView() {
@@ -76,7 +78,9 @@ extension PhotoPuzzlePresenter: PhotoPuzzleViewControllerOutput {
 		if self.puzzles.reduce(into: true, { $0 = $0 && (self.puzzles.firstIndex(of: $1) == $1.y * puzzlesSize + $1.x) }) {
 
 			self.resetView()
-			self.photo.complitionTime = self.seconds
+			self.photo.puzzleTime = self.seconds
+
+			self.model.saveCompletedPuzzle(photo: self.photo, index: self.photoIndex)
 
 			let alertController = UIAlertController(title: "Puzzle Completed in \(seconds) seconds", message: nil, preferredStyle: .alert)
 			alertController.addAction(UIAlertAction(title: "OK", style: .default))

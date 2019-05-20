@@ -6,4 +6,6 @@
 protocol PhotoPuzzleModelInput {
 
 	func createPuzzles(photo: Photo, puzzlesSize: Int)
+
+	func saveCompletedPuzzle(photo: Photo, index: Int)
 }
