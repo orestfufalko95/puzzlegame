@@ -8,10 +8,12 @@ import UIKit
 class Photo {
 
 	let image: UIImage!
+	let itemId: Int!
 
 	var puzzleTime: Int = 0
 
-	init(image: UIImage) {
+	init(image: UIImage, id: Int) {
 		self.image = image
+		self.itemId = id
 	}
 }

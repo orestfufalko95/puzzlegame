@@ -42,7 +42,7 @@ extension PhotoHistoryModel: PhotoLibraryModelInput {
 		dispatchQueue.async {
 			let photos: [Photo] = completedPuzzleIndexes.map {
 				let imagePath = self.imageDir.appendingPathComponent("\($0).jpg").path
-				let photo = Photo(image: UIImage(contentsOfFile: imagePath) ?? UIImage())
+				let photo = Photo(image: UIImage(contentsOfFile: imagePath) ?? UIImage(), id: $0)
 				photo.puzzleTime = puzzleTimes[$0]
 				return photo
 			}
@@ -62,9 +62,14 @@ extension PhotoHistoryModel: PhotoLibraryModelInput {
 			return
 		}
 
+		if puzzleTimes[startIndex] != 0 {
+			self.output?.handleItemsAdded(newPhotos: [])
+			return
+		}
+
 		dispatchQueue.async {
 			let imagePath = self.imageDir.appendingPathComponent("\(startIndex).jpg").path
-			let photo = Photo(image: UIImage(contentsOfFile: imagePath) ?? UIImage())
+			let photo = Photo(image: UIImage(contentsOfFile: imagePath) ?? UIImage(), id: startIndex)
 			photo.puzzleTime = puzzleTimes[startIndex]
 
 			DispatchQueue.main.async { [weak self] in

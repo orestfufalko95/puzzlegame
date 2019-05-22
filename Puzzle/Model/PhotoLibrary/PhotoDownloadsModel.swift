@@ -38,7 +38,7 @@ extension PhotoDownloadsModel: PhotoLibraryModelInput {
 
 			for index in 0..<itemsCount {
 				let imagePath = self.imageDir.appendingPathComponent("\(index).jpg").path
-				photos.append(Photo(image: UIImage(contentsOfFile: imagePath) ?? UIImage()))
+				photos.append(Photo(image: UIImage(contentsOfFile: imagePath) ?? UIImage(), id: index))
 			}
 
 			DispatchQueue.main.async { [weak self] in
@@ -59,11 +59,11 @@ extension PhotoDownloadsModel: PhotoLibraryModelInput {
 
 			let workItem = DispatchWorkItem(flags: .inheritQoS) { [weak self] in
 				do {
-					newPhotos.append(Photo(image: try self?.downloadImage(index: index) ?? UIImage()))
+					newPhotos.append(Photo(image: try self?.downloadImage(index: index) ?? UIImage(), id: index))
 					downloadGroup.leave()
 				} catch {
 //					print("Unable to load data: \(error) index: \(index)")
-					newPhotos.append(Photo(image: UIImage()))
+					newPhotos.append(Photo(image: UIImage(), id: index))
 					downloadGroup.leave()
 				}
 			}

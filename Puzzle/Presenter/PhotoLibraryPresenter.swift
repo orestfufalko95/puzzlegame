@@ -68,7 +68,8 @@ extension PhotoLibraryPresenter: LibraryTableViewControllerOutput {
 	}
 
 	func photoSelected(index: Int) {
-		let controller = ScreenBuilder.picturePuzzleView(photo: self.photos[index], index: index)
+		let photo: Photo = self.photos[index]
+		let controller = ScreenBuilder.picturePuzzleView(photo: photo, index: photo.itemId)
 		self.view?.show(controller, sender: nil)
 	}
 }
