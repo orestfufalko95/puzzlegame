@@ -7,16 +7,16 @@ import UIKit
 
 final class PuzzleCollectionViewFlowLayout: UICollectionViewFlowLayout {
 
-	private let gridSize: () -> Int
+	private weak var delegate: PuzzleFlowLayoutDelegate?
 
-	init(gridSize: @escaping () -> Int) {
-		self.gridSize = gridSize
+	init(delegate: PuzzleFlowLayoutDelegate) {
+		self.delegate = delegate
 
 		super.init()
 	}
 
 	required init?(coder aDecoder: NSCoder) {
-		self.gridSize = ({ return 1 })
+		self.delegate = nil
 
 		super.init(coder: aDecoder)
 	}
@@ -29,7 +29,7 @@ final class PuzzleCollectionViewFlowLayout: UICollectionViewFlowLayout {
 		}
 
 		let inset: CGRect = collectionView.bounds.inset(by: collectionView.layoutMargins)
-		let size = CGFloat(self.gridSize())
+		let size = CGFloat(self.delegate?.gridSize ?? 1)
 		let cellWidth = (inset.width / size).rounded(.down)
 		let cellHeight = (inset.height / size).rounded(.down)
 

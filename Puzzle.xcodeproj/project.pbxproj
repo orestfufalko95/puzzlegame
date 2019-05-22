@@ -26,6 +26,7 @@
 		92CBD7195B3576E7C5D83B28 /* PhotoHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBDC49CD628BE2A9E8B554 /* PhotoHistoryModel.swift */; };
 		92CBD74660CC114168278D57 /* PhotoPuzzleViewControllerInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBD16F12A69723FD3BABB1 /* PhotoPuzzleViewControllerInput.swift */; };
 		92CBD74E9AF98E433F3A0935 /* PhotoPuzzleModelInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBDA7A15B74BB336095FC4 /* PhotoPuzzleModelInput.swift */; };
+		92CBD821A94B1C61CB82C193 /* FlowLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBDDAE4CD51133C3F76A24 /* FlowLayoutDelegate.swift */; };
 		92CBD9377A88CC2F8F6AE487 /* PhotoPuzzleModelOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBD700A4F2A66B6CEFA5DE /* PhotoPuzzleModelOutput.swift */; };
 		92CBDB0BEACD18C8B1A8D160 /* LibraryTableViewControllerOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBD78D402BE94972053CBC /* LibraryTableViewControllerOutput.swift */; };
 		92CBDB1EF2BB4E04C8EECCA0 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBD72EB0F2CE5A5AD386A9 /* Photo.swift */; };
@@ -85,6 +86,7 @@
 		92CBDC49CD628BE2A9E8B554 /* PhotoHistoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoHistoryModel.swift; sourceTree = "<group>"; };
 		92CBDC9156C83755DDEA147D /* ScreenBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenBuilder.swift; sourceTree = "<group>"; };
 		92CBDCB032569700402A6F36 /* PhotoPuzzleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPuzzleCell.swift; sourceTree = "<group>"; };
+		92CBDDAE4CD51133C3F76A24 /* FlowLayoutDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowLayoutDelegate.swift; sourceTree = "<group>"; };
 		92CBDE85553326360BC87063 /* PuzzleCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuzzleCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		92CBDFE153ACDED5E5D7B8B3 /* PhotoLibraryModelInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLibraryModelInput.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -234,6 +236,7 @@
 				92CBD16F12A69723FD3BABB1 /* PhotoPuzzleViewControllerInput.swift */,
 				92CBDCB032569700402A6F36 /* PhotoPuzzleCell.swift */,
 				92CBDE85553326360BC87063 /* PuzzleCollectionViewFlowLayout.swift */,
+				92CBDDAE4CD51133C3F76A24 /* FlowLayoutDelegate.swift */,
 			);
 			path = PhotoPuzzle;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				92CBD15ECD390DFCEF2971B9 /* Puzzle.swift in Sources */,
 				92CBD5F7DC886B52AE5B4276 /* PuzzleCollectionViewFlowLayout.swift in Sources */,
 				92CBD7195B3576E7C5D83B28 /* PhotoHistoryModel.swift in Sources */,
+				92CBD821A94B1C61CB82C193 /* FlowLayoutDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

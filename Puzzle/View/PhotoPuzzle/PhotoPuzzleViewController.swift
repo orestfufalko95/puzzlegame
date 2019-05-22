@@ -29,13 +29,7 @@ final class PhotoPuzzleViewController: UIViewController {
 
 		self.collectionView.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongGesture(gesture:))))
 
-		self.collectionView.collectionViewLayout = PuzzleCollectionViewFlowLayout(gridSize: { [weak self] in
-			if let size = self?.output?.puzzlesSize {
-				return size
-			} else {
-				return 1
-			}
-		})
+		self.collectionView.collectionViewLayout = PuzzleCollectionViewFlowLayout(delegate: self)
 	}
 
 	@IBAction func handlePuzzleSizeSelected(_ sender: Any) {
@@ -103,7 +97,6 @@ extension PhotoPuzzleViewController: UICollectionViewDataSource {
 	}
 
 	public func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-//		print("Starting Index: \(sourceIndexPath.item) Ending Index: \(destinationIndexPath.item)")
 		self.output?.swap(fromIndex: sourceIndexPath.item, toIndex: destinationIndexPath.item)
 	}
 
@@ -118,4 +111,15 @@ extension PhotoPuzzleViewController: UICollectionViewDataSource {
 
 		return cell
 	}
+}
+
+extension PhotoPuzzleViewController: PuzzleFlowLayoutDelegate {
+
+    var gridSize: Int {
+	    if let size = self.output?.puzzlesSize {
+		    return size
+	    } else {
+		    return 1
+	    }
+    }
 }
