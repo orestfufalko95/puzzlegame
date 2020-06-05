@@ -81,20 +81,19 @@ extension PhotoDownloadsModel: PhotoLibraryModelInput {
 private extension PhotoDownloadsModel {
 
 	func downloadImage(index: Int) throws -> UIImage? {
-		if let imageDownloadUrl: URL = URL(string: self.imagesUrl + String(index)) {
-
-			let imageData: Data = try Data(contentsOf: imageDownloadUrl)
-			print("download completed index: \(index)")
-
-			let image: UIImage? = UIImage(data: imageData)
-			let imagePath = self.imageDir.appendingPathComponent("\(index).jpg").path
-
-			try self.saveImage(image: image, imagePath: imagePath)
-
-			return image
-		} else {
+		guard let imageDownloadUrl: URL = URL(string: self.imagesUrl + String(index)) else {
 			return UIImage()
 		}
+
+		let imageData: Data = try Data(contentsOf: imageDownloadUrl)
+		print("download completed index: \(index)")
+
+		let image: UIImage? = UIImage(data: imageData)
+		let imagePath = self.imageDir.appendingPathComponent("\(index).jpg").path
+
+		try self.saveImage(image: image, imagePath: imagePath)
+
+		return image
 	}
 
 	func saveImage(image: UIImage?, imagePath: String) throws {
